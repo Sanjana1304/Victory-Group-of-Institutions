@@ -175,19 +175,19 @@ const LandingPage = () => {
             <h1 className='flex text-xl md:text-4xl mt-7 mb-7 text-blue justify-center font-bold'>We Offer</h1>
             <div className="flex flex-col justify-around w-[90%] mx-auto sm:flex-row">
                 <div className='flex  items-center h-64 justify-center rounded bg-gradient-to-b from-cyan-400 to-cyan-600 px-3 sm:w-[23%] mb-3 '>
-                    <h1 className='font-bold mt-2 text-lg'>50+ Courses</h1>
+                    <h1 className='font-bold mt-2 text-2xl'>50+ Courses</h1>
                 </div>
                 <div className='flex items-center h-64 justify-center rounded bg-gradient-to-b from-cyan-500 to-purple-400 px-3 sm:w-[23%] mb-3'>
                     
-                    <h1 className='font-bold mt-2 text-lg'>College Admissions</h1>
+                    <h1 className='font-bold mt-2 text-2xl'>College Admissions</h1>
                 </div>
                 <div className='flex items-center h-64 justify-center rounded bg-gradient-to-b from-cyan-400 to-cyan-600 px-3 sm:w-[23%] mb-3'>
                     
-                    <h1 className='font-bold mt-2 text-lg'>Open Schooling</h1>
+                    <h1 className='font-bold mt-2 text-2xl'>Open Schooling</h1>
                 </div>
                 <div className='flex items-center h-64 justify-center rounded bg-gradient-to-b from-cyan-500 to-purple-400 px-3 sm:w-[23%] mb-3'>
                     
-                    <h1 className='font-bold mt-2 text-lg'>Job Training</h1>
+                    <h1 className='font-bold mt-2 text-2xl'>Job Training</h1>
                 </div>
             </div>
         </section>
