@@ -9,7 +9,7 @@ const ContactForm = () => {
     <>
     <h1 className='text-center mb-10 text-3xl text-blue font-bold' id='contact'>Contact Us</h1>
 
-    <div className='flex justify-around shadow w-[90%] mx-auto p-3 mb-10'>
+    <div className='flex flex-col sm:flex-row justify-around shadow w-[90%] mx-auto p-3 mb-10'>
         <div className='flex flex-col p-2'>
             <div className='flex mb-4 p-2'>
                 
@@ -57,13 +57,13 @@ const ContactForm = () => {
             
         </div>
 
-        <form className='w-[50%] p-2 rounded'>
-            <div className="form-group flex flex-col">
+        <form className='sm:w-[50%] p-2 rounded'>
+            <div className="form-group flex flex-col w-full">
                 
                 <label htmlFor="name" className='text-xl font-semibold mb-1'>Name</label>
                 <input
                     type="text"
-                    className="form-control text-green border border-gray-300 p-2 mb-4 rounded-md transition duration-300 ease-in-out focus:border-blue focus:outline-none font-semibold"
+                    className="form-control w-full text-green border border-gray-300 p-2 mb-4 rounded-md transition duration-300 ease-in-out focus:border-blue focus:outline-none font-semibold"
                     id="name"
                     placeholder="Enter your name"
                 />

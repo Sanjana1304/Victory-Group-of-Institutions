@@ -248,7 +248,7 @@ const LandingPage = () => {
 
                 <div className='cursor-pointer relative flex items-center h-64 justify-center rounded bg-gradient-to-b from-cyan-500 to-purple-400 px-3 sm:w-[23%] mb-3 overflow-hidden group'>
                     
-                    <h1 className='font-bold mt-2 text-2xl'>Job Training</h1>
+                    <h1 className='font-bold mt-2 text-2xl'>Job Bootcamps</h1>
 
                     <div className="absolute p-2 inset-0 flex items-center justify-center bg-gradient-to-b from-cyan-400 to-cyan-600 text-white font-medium text-sm opacity-0 translate-y-full group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                       We offer comprehensive job training, including interview preparation, valuable tips, and expert guidance. Our programs are designed to equip students with the skills and confidence needed to succeed in the competitive job market.
@@ -286,10 +286,10 @@ const LandingPage = () => {
                     <h1 className='font-bold text-2xl text-blue'>Victory Group of Institutions</h1>
                     <p className='mt-2'>Victory Group of Institutions is a leading educational institution that offers a wide range of courses to help students achieve their academic and career goals. Our comprehensive curriculum, experienced faculty, and personalized approach ensure that students receive the best education and support to excel in their chosen field.</p>
                     <div className="flex mt-4">
-                      <FaInstagram className='text-red text-xl mr-2' />
-                      <FaLinkedin className='text-blue text-xl mr-2' />
-                      <TfiYoutube className='text-red text-xl mr-2' />
-                      <FaFacebook className='text-blue text-xl mr-2' />
+                      <a href=""><FaInstagram className='text-red text-xl mr-2' /></a>
+                      <a href=""><FaLinkedin className='text-blue text-xl mr-2' /></a>
+                      <a href=""><TfiYoutube className='text-red text-xl mr-2' /></a>
+                      <a href=""><FaFacebook className='text-blue text-xl mr-2' /></a>
                       
                     </div>
                 </div>
