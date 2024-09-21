@@ -8,6 +8,7 @@ export default {
       colors:{
         blue : '#0099ff',
         red: '#ff0000',
+        green: '#800080',
       }
     },
   },

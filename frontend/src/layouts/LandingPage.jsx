@@ -12,6 +12,7 @@ import Tuitions from '../components/landBox/Tuitions';
 import SummerCamp from '../components/landBox/SummerCamp';
 import DesignCourse from '../components/landBox/DesignCourse';
 import Testimonials from '../components/landBox/Testimonials';
+import ContactForm from '../components/landBox/ContactForm';
 
 const LandingPage = () => {
     const [expanded, setExpanded] = useState(false);
@@ -118,7 +119,7 @@ const LandingPage = () => {
               <div className="absolute transition-all duration-200 rounded-full -inset-px bg-gradient-to-r from-cyan-500 to-purple-500"></div>
               <a
                 className="relative inline-flex items-center justify-center px-6 py-2 text-base font-normal text-white bg-blue border border-transparent rounded-full"
-                role="button"
+                href='#contact'
                 
               >
                 Enquire
@@ -263,10 +264,12 @@ const LandingPage = () => {
 
         </section>
         <div className='w-[90%] mx-auto text-gray-600 text-sm'>
-          <span className='text-red font-bold'>Can't find your course?</span> No worries! At Victory, you can create <span className='text-blue font-bold'> your own personalized course </span>, complete with a custom syllabus that fits your goals. Your education, your way!
+          <span className='text-red font-bold'>Can't find your course?</span> No worries! At Victory, you can create <span className='text-blue'> your own personalized course </span>, complete with a custom syllabus that fits your goals. Your education, your way!
         </div>
 
         <Testimonials/>
+
+        <ContactForm />
 
         <section className='about-us w-[90%] mx-auto shadow p-2 mb-10' id='aboutus'>
             <h1 className='flex text-xl md:text-4xl mt-7 mb-7 text-blue justify-center font-bold'>About Us</h1>
