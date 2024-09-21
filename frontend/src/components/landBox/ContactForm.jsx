@@ -69,7 +69,7 @@ const ContactForm = () => {
                 />
 
 
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email" className='text-xl font-semibold mb-1'>Email</label>
                 <input 
                     type="email" 
                     className="form-control text-green border border-gray-300 p-2 mb-4 rounded-md transition duration-300 ease-in-out focus:border-blue focus:outline-none font-semibold"
@@ -77,7 +77,7 @@ const ContactForm = () => {
                     placeholder="Enter your email" 
                 />
 
-                <label htmlFor="phone">Phone</label>
+                <label htmlFor="phone" className='text-xl font-semibold mb-1'>Phone</label>
                 <input 
                     type="tel" 
                     className="form-control text-green border border-gray-300 p-2 mb-4 rounded-md transition duration-300 ease-in-out focus:border-blue focus:outline-none font-semibold"
@@ -85,11 +85,11 @@ const ContactForm = () => {
                     placeholder="Enter your phone number" 
                 />
 
-                <label htmlFor="message">Message</label>
+                <label htmlFor="message" className='text-xl font-semibold mb-1'>Message</label>
                 <textarea 
                     className="form-control text-green border border-gray-300 p-2 mb-4 rounded-md transition duration-300 ease-in-out focus:border-blue focus:outline-none font-semibold"
                     id="message" 
-                    rows="3">
+                    rows="4">
                 
                 </textarea>
 

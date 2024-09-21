@@ -13,6 +13,10 @@ import SummerCamp from '../components/landBox/SummerCamp';
 import DesignCourse from '../components/landBox/DesignCourse';
 import Testimonials from '../components/landBox/Testimonials';
 import ContactForm from '../components/landBox/ContactForm';
+import { FaInstagram } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
+import { TfiYoutube } from "react-icons/tfi";
 
 const LandingPage = () => {
     const [expanded, setExpanded] = useState(false);
@@ -263,6 +267,7 @@ const LandingPage = () => {
           </div>
 
         </section>
+
         <div className='w-[90%] mx-auto text-gray-600 text-sm'>
           <span className='text-red font-bold'>Can't find your course?</span> No worries! At Victory, you can create <span className='text-blue'> your own personalized course </span>, complete with a custom syllabus that fits your goals. Your education, your way!
         </div>
@@ -280,6 +285,13 @@ const LandingPage = () => {
                 <div className='p-5'>
                     <h1 className='font-bold text-2xl text-blue'>Victory Group of Institutions</h1>
                     <p className='mt-2'>Victory Group of Institutions is a leading educational institution that offers a wide range of courses to help students achieve their academic and career goals. Our comprehensive curriculum, experienced faculty, and personalized approach ensure that students receive the best education and support to excel in their chosen field.</p>
+                    <div className="flex mt-4">
+                      <FaInstagram className='text-red text-xl mr-2' />
+                      <FaLinkedin className='text-blue text-xl mr-2' />
+                      <TfiYoutube className='text-red text-xl mr-2' />
+                      <FaFacebook className='text-blue text-xl mr-2' />
+                      
+                    </div>
                 </div>
             </div>
         </section>
