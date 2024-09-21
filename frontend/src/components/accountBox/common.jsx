@@ -6,19 +6,18 @@ export const BoxContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 10px;
-  background-color: rgba(0,0,0,1);
+  background-color: rgba(255, 255, 255, 1);
 `;
 
 export const FormContainer = styled.form`
   width: 100%;
   display: flex;
   flex-direction: column;
-  
 `;
 
 export const MutedLink = styled.a`
   font-size: 12px;
-  color: rgba(255,255,255,0.5);
+  color: rgba(0,0,0,0.5);
   font-weight: 500;
   text-decoration: none;
   border-bottom: 1px dashed rgba(0,0,0,1);
@@ -28,6 +27,7 @@ export const BoldLink = styled.a`
   font-size: 12px;
   color: purple;
   font-weight: 500;
+  cursor: pointer;
   text-decoration: none;
   border-bottom: 1px dashed rgba(255,255,255,1);
 `;
@@ -43,8 +43,8 @@ export const Input = styled.input.attrs((props) => ({
   padding: 0px 10px;
   transition: all 200ms ease-in-out;
   margin-bottom: 5px;
-  background: rgba(0, 0, 0, 1);
-  color: rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 1);
+  color: rgba(0, 0, 0, 1);
 
   &::placeholder {
     color: rgba(200, 200, 200, 1);

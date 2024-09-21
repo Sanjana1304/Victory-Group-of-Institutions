@@ -76,7 +76,7 @@ export function LoginForm() {
 
       </FormContainer>
       <Marginer direction="vertical" margin={10} />
-      <MutedLink href="#">Forgot your password?</MutedLink>
+      <MutedLink href="#" className="mb-4">Forgot your password?</MutedLink>
       <Marginer direction="vertical" />
 
       <Marginer direction="vertical" />

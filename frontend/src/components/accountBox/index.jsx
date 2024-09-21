@@ -11,7 +11,7 @@ const BoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 19px;
-  background-color: rgba(0, 0, 0, 1);
+  background-color: rgba(255,255,255 ,1);
   box-shadow: 0 0 2px rgba(15, 15, 15, 0.28);
   position: relative;
   overflow: hidden;

@@ -82,12 +82,13 @@ export function SignupForm() {
       <Marginer direction="vertical" />
       
       <Marginer direction="vertical" />
-      <LineText>
+      <LineText className="mt-2">
         Already have an account?{" "}
         <BoldLink onClick={switchToSignin} href="#">
           Signin
         </BoldLink>
       </LineText>
+
     </BoxContainer>
   );
 }
