@@ -42,6 +42,7 @@ const LandingPage = () => {
     };
   return (
     <div className="">
+
         <header className="py-4 sm:py-6">
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
@@ -253,7 +254,7 @@ const LandingPage = () => {
 
         <h1 className='flex text-xl md:text-4xl mt-7 mb-7 text-blue justify-center font-bold'>Courses Offered</h1>
         
-        <section id='courses_offered' className='courses-offered sm:flex w-[90%] mx-auto rounded border mb-4'>
+        <section id='courses_offered' className='courses-offered sm:flex w-[90%] mx-auto rounded border'>
           <a href="#courses_list"><Sidebar activeItem={activeItem} setActiveItem={setActiveItem}/></a>
           <div className="flex-grow p-8" id='courses_list'>
                 {renderContent()}
@@ -261,8 +262,24 @@ const LandingPage = () => {
           </div>
 
         </section>
+        <div className='w-[90%] mx-auto text-gray-600 text-sm'>
+          <span className='text-red font-bold'>Can't find your course?</span> No worries! At Victory, you can create <span className='text-blue font-bold'> your own personalized course </span>, complete with a custom syllabus that fits your goals. Your education, your way!
+        </div>
 
         <Testimonials/>
+
+        <section className='about-us w-[90%] mx-auto shadow p-2 mb-10' id='aboutus'>
+            <h1 className='flex text-xl md:text-4xl mt-7 mb-7 text-blue justify-center font-bold'>About Us</h1>
+            <div className='flex flex-col sm:flex-row'>
+                <div className='p-5'>
+                    <img src='/images/aboutus.webp' alt='' className='w-[1000px] h-[250px] mx-auto rounded'/>
+                </div>
+                <div className='p-5'>
+                    <h1 className='font-bold text-2xl text-blue'>Victory Group of Institutions</h1>
+                    <p className='mt-2'>Victory Group of Institutions is a leading educational institution that offers a wide range of courses to help students achieve their academic and career goals. Our comprehensive curriculum, experienced faculty, and personalized approach ensure that students receive the best education and support to excel in their chosen field.</p>
+                </div>
+            </div>
+        </section>
 
         <footer className='bg-blue text-white'>
             <div className='flex flex-col sm:flex-row p-4 justify-between'>
