@@ -11,6 +11,7 @@ import AccountSolns from '../components/landBox/AccountSolns';
 import Tuitions from '../components/landBox/Tuitions';
 import SummerCamp from '../components/landBox/SummerCamp';
 import DesignCourse from '../components/landBox/DesignCourse';
+import Testimonials from '../components/landBox/Testimonials';
 
 const LandingPage = () => {
     const [expanded, setExpanded] = useState(false);
@@ -99,7 +100,7 @@ const LandingPage = () => {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex md:items-center space-x-10 lg:ml-20 lg:space-x-12">
-              <a href="#feature" className="text-base font-normal text-gray-600 transition hover:text-black">
+              <a href="#courses_offered" className="text-base font-normal text-gray-600 transition hover:text-black">
                 Courses Offered
               </a>
               <a href="#testi" className="text-base font-normal text-gray-600 transition hover:text-black">
@@ -141,7 +142,7 @@ const LandingPage = () => {
           {expanded && (
             <nav className="mt-4">
               <div className="flex flex-col pt-8 pb-4 space-y-6">
-                <a href="#feature" className="text-base font-normal text-gray-600 transition hover:text-black">
+                <a href="#courses_offered" className="text-base font-normal text-gray-600 transition hover:text-black">
                 Courses Offered
                 </a>
                 <a href="#testi" className="text-base font-normal text-gray-600 transition hover:text-black">
@@ -251,7 +252,8 @@ const LandingPage = () => {
         </section>
 
         <h1 className='flex text-xl md:text-4xl mt-7 mb-7 text-blue justify-center font-bold'>Courses Offered</h1>
-        <section className='courses-offered sm:flex w-[90%] mx-auto rounded border mb-4'>
+        
+        <section id='courses_offered' className='courses-offered sm:flex w-[90%] mx-auto rounded border mb-4'>
           <a href="#courses_list"><Sidebar activeItem={activeItem} setActiveItem={setActiveItem}/></a>
           <div className="flex-grow p-8" id='courses_list'>
                 {renderContent()}
@@ -259,6 +261,8 @@ const LandingPage = () => {
           </div>
 
         </section>
+
+        <Testimonials/>
 
         <footer className='bg-blue text-white'>
             <div className='flex flex-col sm:flex-row p-4 justify-between'>
@@ -269,8 +273,6 @@ const LandingPage = () => {
                     <a href='mailto:' className='ml-1'>victorygroupofinstitutions@gmail.com</a>
                 </p>
             </div>
-
-
         </footer>
 
 
