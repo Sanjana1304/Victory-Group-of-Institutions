@@ -2,10 +2,10 @@ import React from 'react'
 
 const CourseBox = ({coursename,imgg,desc}) => {
   return (
-    <div className='border shadow flex mb-2'>
+    <div className='border shadow flex mb-3 p-2'>
         <div className='p-4'>
             <div className='text-center'>
-                <img src={imgg} alt='course' height={"150px"} width={"300px"}/>
+                <img src={imgg} alt='course' height={"250px"} width={"300px"}/>
             </div>
            
         </div>
