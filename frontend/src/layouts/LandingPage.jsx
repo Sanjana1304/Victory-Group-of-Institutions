@@ -3,9 +3,12 @@ import { FaBookOpen } from "react-icons/fa";
 import { MdOutlineContactSupport } from "react-icons/md";
 import { IoPerson } from "react-icons/io5";
 import { LuBrainCircuit } from "react-icons/lu";
+import Sidebar from '../components/landBox/SideBar';
 
 const LandingPage = () => {
     const [expanded, setExpanded] = useState(false);
+
+    const [activeItem, setActiveItem] = useState("Programming & Development");
   return (
     <div className="">
         <header className="py-4 sm:py-6">
@@ -215,7 +218,13 @@ const LandingPage = () => {
             </div>
         </section>
 
-        
+        <h1 className='flex text-xl md:text-4xl mt-7 mb-7 text-blue justify-center font-bold'>Courses Offered</h1>
+        <section className='courses-offered flex w-[90%] mx-auto rounded border'>
+          <Sidebar activeItem={activeItem} setActiveItem={setActiveItem}/>
+          <div></div>
+        </section>
+
+
 
     </div>
   )
