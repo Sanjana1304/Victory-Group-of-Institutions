@@ -249,9 +249,9 @@ const LandingPage = () => {
         </section>
 
         <h1 className='flex text-xl md:text-4xl mt-7 mb-7 text-blue justify-center font-bold'>Courses Offered</h1>
-        <section className='courses-offered flex w-[90%] mx-auto rounded border'>
-          <Sidebar activeItem={activeItem} setActiveItem={setActiveItem}/>
-          <div className="flex-grow p-8">
+        <section className='courses-offered sm:flex w-[90%] mx-auto rounded border'>
+          <a href="#courses_list"><Sidebar activeItem={activeItem} setActiveItem={setActiveItem}/></a>
+          <div className="flex-grow p-8" id='courses_list'>
                 {renderContent()}
                 
         </div>
