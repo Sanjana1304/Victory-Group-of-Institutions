@@ -160,37 +160,62 @@ const LandingPage = () => {
                     <div className='p-9 rounded-full mx-auto bg-blue w-max text-white'><MdOutlineContactSupport className='text-3xl' /></div>
                     <h1 className='font-bold mt-2 flex justify-center mb-4'>1 to 1 Support</h1>
                 </div>
-                <div>
-                    <div className='p-9 rounded-full mx-auto bg-blue w-max text-white'><IoPerson className='text-3xl'/></div>
-                    <h1 className='font-bold mt-2 flex justify-center mb-4'>Best Teachers</h1>
-                </div>
+
                 <div>
                     <div className='p-9 rounded-full mx-auto bg-blue w-max text-white'><LuBrainCircuit className='text-3xl'/></div>
                     <h1 className='font-bold mt-2 flex justify-center mb-4'>Personalized Course Offerings</h1>
                 </div>
+
+                <div>
+                    <div className='p-9 rounded-full mx-auto bg-blue w-max text-white'><IoPerson className='text-3xl'/></div>
+                    <h1 className='font-bold mt-2 flex justify-center mb-4'>Best Teachers</h1>
+                </div>
+                
             </div>
         </section>
 
         <section className='offered'>
             <h1 className='flex text-xl md:text-4xl mt-7 mb-7 text-blue justify-center font-bold'>We Offer</h1>
             <div className="flex flex-col justify-around w-[90%] mx-auto sm:flex-row">
-                <div className='flex  items-center h-64 justify-center rounded bg-gradient-to-b from-cyan-400 to-cyan-600 px-3 sm:w-[23%] mb-3 '>
+                
+                <div className='cursor-pointer relative flex  items-center h-64 justify-center rounded bg-gradient-to-b from-cyan-400 to-cyan-600 px-3 sm:w-[23%] mb-3 overflow-hidden group'>
                     <h1 className='font-bold mt-2 text-2xl'>50+ Courses</h1>
+
+                    <div className="absolute p-2 inset-0 flex items-center justify-center bg-gradient-to-b from-cyan-500 to-purple-400 text-white font-medium text-sm opacity-0 translate-y-full group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                      We offer over 50 courses in a wide range of fields, including Computer Science, SAP, Tally, and Spoken Languages. Our diverse curriculum ensures comprehensive learning opportunities for students to excel in their chosen area of interest.
+                    </div>
                 </div>
-                <div className='flex items-center h-64 justify-center rounded bg-gradient-to-b from-cyan-500 to-purple-400 px-3 sm:w-[23%] mb-3'>
+
+                <div className='cursor-pointer relative flex items-center h-64 justify-center rounded bg-gradient-to-b from-cyan-500 to-purple-400 px-3 sm:w-[23%] mb-3 overflow-hidden group'>
                     
                     <h1 className='font-bold mt-2 text-2xl'>College Admissions</h1>
+
+                    <div className="absolute p-2 inset-0 flex items-center justify-center bg-gradient-to-b from-cyan-400 to-cyan-600 text-white font-medium text-sm opacity-0 translate-y-full group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                      We provide personalized college admission guidance to help students navigate the application process, choose the right institutions, and maximize their chances of success. Our expert support ensures students make informed decisions for their higher education.
+                    </div>
                 </div>
-                <div className='flex items-center h-64 justify-center rounded bg-gradient-to-b from-cyan-400 to-cyan-600 px-3 sm:w-[23%] mb-3'>
+
+                <div className='cursor-pointer relative flex items-center h-64 justify-center rounded bg-gradient-to-b from-cyan-400 to-cyan-600 px-3 sm:w-[23%] mb-3 overflow-hidden group'>
                     
                     <h1 className='font-bold mt-2 text-2xl'>Open Schooling</h1>
+
+                    <div className="absolute p-2 inset-0 flex items-center justify-center bg-gradient-to-b from-cyan-500 to-purple-400 text-white font-medium text-sm opacity-0 translate-y-full group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                      Whether you prefer self-paced study or guidance, we've got you covered. We assist you in applying to NIOS Boards, ensuring a seamless journey from admissions to examinations. With our guidance and access to the board's portals, you can confidently navigate the entire process.
+                    </div>
                 </div>
-                <div className='flex items-center h-64 justify-center rounded bg-gradient-to-b from-cyan-500 to-purple-400 px-3 sm:w-[23%] mb-3'>
+
+                <div className='cursor-pointer relative flex items-center h-64 justify-center rounded bg-gradient-to-b from-cyan-500 to-purple-400 px-3 sm:w-[23%] mb-3 overflow-hidden group'>
                     
                     <h1 className='font-bold mt-2 text-2xl'>Job Training</h1>
+
+                    <div className="absolute p-2 inset-0 flex items-center justify-center bg-gradient-to-b from-cyan-400 to-cyan-600 text-white font-medium text-sm opacity-0 translate-y-full group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                      We offer comprehensive job training, including interview preparation, valuable tips, and expert guidance. Our programs are designed to equip students with the skills and confidence needed to succeed in the competitive job market.
+                    </div>
                 </div>
             </div>
         </section>
+
+        
 
     </div>
   )
