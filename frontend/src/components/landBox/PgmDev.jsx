@@ -24,7 +24,7 @@ const PgmDev = () => {
   return (
     <div className='max-h-[500px] overflow-y-scroll'>
       {courses.map((course,index) => {
-        return <CourseBox coursename={course} imgg="/images/comp2.avif" desc={descriptions[index]}/>
+        return <CourseBox key={index} coursename={course} imgg="/images/comp2.avif" desc={descriptions[index]}/>
       })}
     </div>
   )

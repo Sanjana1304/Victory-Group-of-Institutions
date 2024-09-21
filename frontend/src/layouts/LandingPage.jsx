@@ -17,6 +17,8 @@ import { FaInstagram } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { TfiYoutube } from "react-icons/tfi";
+import Modal from './Modal';
+import UserAuth from './UserAuth';
 
 const LandingPage = () => {
     const [expanded, setExpanded] = useState(false);
@@ -44,6 +46,17 @@ const LandingPage = () => {
           default:
               return <PgmDev/>;
       }
+    };
+
+    const [isAuthOpen, setIsAuthOpen] = useState(false);
+
+    const handleSignIn = (e) => {
+      e.preventDefault();
+      setIsAuthOpen(true);
+    }
+  
+    const closeAuth = () => {
+      setIsAuthOpen(false);
     };
   return (
     <div className="">
@@ -135,6 +148,7 @@ const LandingPage = () => {
               <a
                 className="relative inline-flex items-center justify-center px-6 py-2 text-base font-normal text-white bg-blue border border-transparent rounded-full"
                 role="button"
+                onClick={handleSignIn}
                 
               >
                 Sign In
@@ -175,6 +189,7 @@ const LandingPage = () => {
                   <a
                     className="relative inline-flex items-center justify-center w-full px-6 py-2 text-base font-normal text-white bg-blue border border-transparent rounded-full"
                     role="button"
+                    onClick={handleSignIn}
                     
                   >
                     Sign In
@@ -295,6 +310,12 @@ const LandingPage = () => {
                 </div>
             </div>
         </section>
+
+        {isAuthOpen && (
+          <Modal onClose={closeAuth}>
+              <UserAuth/>
+          </Modal>
+        )}
 
         <footer className='bg-blue text-white'>
             <div className='flex flex-col sm:flex-row p-4 justify-between'>
