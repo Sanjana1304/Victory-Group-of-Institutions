@@ -38,7 +38,7 @@ const LandingPage = () => {
           default:
               return <PgmDev/>;
       }
-  };
+    };
   return (
     <div className="">
         <header className="py-4 sm:py-6">
@@ -188,10 +188,10 @@ const LandingPage = () => {
                     <div className='p-9 rounded-full mx-auto bg-blue w-max text-white flex justify-center'><FaBookOpen className='text-3xl' /></div>
                     <h1 className=' font-bold mt-2 flex justify-center mb-4'>Best Curriculum</h1>
                 </div>
-                
+
                 <div>
-                    <div className='p-9 rounded-full mx-auto bg-blue w-max text-white'><MdOutlineContactSupport className='text-3xl' /></div>
-                    <h1 className='font-bold mt-2 flex justify-center mb-4'>1 to 1 Support</h1>
+                    <div className='p-9 rounded-full mx-auto bg-blue w-max text-white'><IoPerson className='text-3xl'/></div>
+                    <h1 className='font-bold mt-2 flex justify-center mb-4'>Online and Offline Classes</h1>
                 </div>
 
                 <div>
@@ -200,9 +200,11 @@ const LandingPage = () => {
                 </div>
 
                 <div>
-                    <div className='p-9 rounded-full mx-auto bg-blue w-max text-white'><IoPerson className='text-3xl'/></div>
-                    <h1 className='font-bold mt-2 flex justify-center mb-4'>Best Teachers</h1>
+                    <div className='p-9 rounded-full mx-auto bg-blue w-max text-white'><MdOutlineContactSupport className='text-3xl' /></div>
+                    <h1 className='font-bold mt-2 flex justify-center mb-4'>1 to 1 Support</h1>
                 </div>
+
+                
                 
             </div>
         </section>
@@ -249,14 +251,27 @@ const LandingPage = () => {
         </section>
 
         <h1 className='flex text-xl md:text-4xl mt-7 mb-7 text-blue justify-center font-bold'>Courses Offered</h1>
-        <section className='courses-offered sm:flex w-[90%] mx-auto rounded border'>
+        <section className='courses-offered sm:flex w-[90%] mx-auto rounded border mb-4'>
           <a href="#courses_list"><Sidebar activeItem={activeItem} setActiveItem={setActiveItem}/></a>
           <div className="flex-grow p-8" id='courses_list'>
                 {renderContent()}
                 
-        </div>
+          </div>
 
         </section>
+
+        <footer className='bg-blue text-white'>
+            <div className='flex flex-col sm:flex-row p-4 justify-between'>
+                <p className='font-bold'>VGI</p>
+                <p>Address: 123, XYZ Street, ABC City</p>
+                <p>Phone: +91 9962360444</p>
+                <p>Email: 
+                    <a href='mailto:' className='ml-1'>victorygroupofinstitutions@gmail.com</a>
+                </p>
+            </div>
+
+
+        </footer>
 
 
 
