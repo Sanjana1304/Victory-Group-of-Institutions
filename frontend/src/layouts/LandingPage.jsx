@@ -4,11 +4,41 @@ import { MdOutlineContactSupport } from "react-icons/md";
 import { IoPerson } from "react-icons/io5";
 import { LuBrainCircuit } from "react-icons/lu";
 import Sidebar from '../components/landBox/SideBar';
+import OfficeTools from '../components/landBox/OfficeTools';
+import SpokenLangs from '../components/landBox/SpokenLangs';
+import PgmDev from '../components/landBox/PgmDev';
+import AccountSolns from '../components/landBox/AccountSolns';
+import Tuitions from '../components/landBox/Tuitions';
+import SummerCamp from '../components/landBox/SummerCamp';
+import DesignCourse from '../components/landBox/DesignCourse';
 
 const LandingPage = () => {
     const [expanded, setExpanded] = useState(false);
 
     const [activeItem, setActiveItem] = useState("Programming & Development");
+
+    const renderContent = () => {
+      switch (activeItem) {
+          case "Programming & Development":
+            return <PgmDev/>;
+          case "Office Productivity Tools":
+              return <OfficeTools/>
+          case "Business & Accounting Solutions":
+              return <AccountSolns/>;
+          
+          case "Spoken Languages":
+              return <SpokenLangs/>;
+          case "Creative Design & Multimedia":
+              return <DesignCourse/>; ;
+          case "Tuitions":
+            return <Tuitions/>; ;
+          
+            case "Summer Camp":
+            return <SummerCamp/>; ;
+          default:
+              return <PgmDev/>;
+      }
+  };
   return (
     <div className="">
         <header className="py-4 sm:py-6">
@@ -221,7 +251,11 @@ const LandingPage = () => {
         <h1 className='flex text-xl md:text-4xl mt-7 mb-7 text-blue justify-center font-bold'>Courses Offered</h1>
         <section className='courses-offered flex w-[90%] mx-auto rounded border'>
           <Sidebar activeItem={activeItem} setActiveItem={setActiveItem}/>
-          <div></div>
+          <div className="flex-grow p-8">
+                {renderContent()}
+                
+        </div>
+
         </section>
 
 
