@@ -30,6 +30,10 @@ const courseSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    courseStatus:{
+        type: String,
+        required: true,
+    },
 })
 
 const userSchema = new mongoose.Schema({

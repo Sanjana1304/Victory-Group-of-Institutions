@@ -3,6 +3,7 @@ import DataContext from '../context/DataContext'
 import api from '../api/axiosConfig';
 import { useQuery } from 'react-query'
 import { fetchUserData } from '../api-client';
+import CourseBox from '../components/landBox/CourseBox';
 
 const HomePageStudent = () => {
   const [expanded, setExpanded] = useState(false);
@@ -156,18 +157,18 @@ const HomePageStudent = () => {
           <p className='text-2xl font-semibold mb-3 mx-auto'>Personal Details</p>
           <img src='https://via.placeholder.com/200' alt='profile' className='mx-auto rounded-full' />
           <button className='bg-blue w-max mx-auto mt-1 rounded text-white p-1 text-[10px] cursor-pointer'>Add Photo</button>
-          <p className='text-xl font-semibold mt-2 mx-auto'>{userdata.name}</p>
-          <p className='text-sm font-normal mt-2 mx-auto'>{userdata.email}</p>
-          <p className='text-sm font-normal mx-auto'>{userdata.phone}</p>
+          <p className='text-xl font-semibold mt-2 mx-auto'>{userdata?.name}</p>
+          <p className='text-sm font-normal mt-2 mx-auto'>{userdata?.email}</p>
+          <p className='text-sm font-normal mx-auto'>{userdata?.phone}</p>
 
           <div className='mt-4 mx-auto'>
             <h1 className='text-xl font-semibold'>Education</h1>
             {
-              !userdata.education ? 
+              !userdata?.education ? 
               <button className='bg-blue w-max mx-auto mt-1 rounded text-white p-1 text-[10px] cursor-pointer'>Add Education</button>
               :
               <div>
-                <p className='text-sm '>{userdata.education}</p>
+                <p className='text-sm '>{userdata?.education}</p>
               </div>
             }
             
@@ -176,29 +177,24 @@ const HomePageStudent = () => {
           <div className='mt-4 mx-auto flex flex-col justify-center'>
             <h1 className='text-xl font-semibold'>Work Experience</h1>
             {
-              !userdata.experience ? 
+              !userdata?.experience ? 
               <button className='bg-blue w-max mx-auto mt-1 rounded text-white p-1 text-[10px] cursor-pointer'>Add Work Experience</button>
               :
-              <p className='text-sm'>{userdata.experience}</p>
+              <p className='text-sm'>{userdata?.experience}</p>
             }
             
           </div>
         </div>
 
-        <div className='w-[100%] sm:w-[70%] border p-4'>
+        <div className='w-[100%] sm:w-[70%] border p-4 rounded-lg'>
           <h1 className='font-semibold text-xl'>Courses Enrolled</h1>
           {
-            userdata.courses.length>0
+            userdata?.courses?.length>0
             ?
             <div className='mt-4'>
               {
                 userdata.courses.map((course,index) => {
-                  return (
-                    <div key={index} className='border p-2 mb-2'>
-                      <p className='text-xl font-semibold'>{course.name}</p>
-                      <p className='text-sm font-normal'>{course.description}</p>
-                    </div>
-                  )
+                  return <CourseBox key={index} coursename={course.courseName} imgg="/images/comp2.avif" desc={course.courseDescription} coursePrice={course.coursePrice} courseRegDate={course.courseRegDate} courseDuration={course.courseDuration} courseInstructor={course.courseInstructor} status={"In progress"}  />
                 })
               }
             </div>
