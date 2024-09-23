@@ -10,8 +10,8 @@ import {
 } from "./common";
 import { Marginer } from "../marginer";
 import { AccountContext } from './accountContext';
-//import { useNavigate } from "react-router-dom";
-// import api from "../../api/axiosConfig";
+import { useNavigate } from "react-router-dom";
+import api from "../../api/axiosConfig";
 
 
 export function LoginForm() {
@@ -20,41 +20,45 @@ export function LoginForm() {
 
   const [loginMail,setloginMail] = useState("");
   const [loginPassword,setloginPassword] = useState("");
-  //const navig = useNavigate();
+  const navig = useNavigate();
 
-  // const signIntoMyAccount = async(e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const authbody = {
-  //       email:loginMail,
-  //       password:loginPassword
-  //     }
-  //     const response = await api.post(`/api/auth/login`,authbody,{
-  //       headers:{
-  //         'Content-Type':'application/json'
-  //       },
-  //       withCredentials: true
-  //     });
-  //     if (response.status === 200) {
-  //       const { token, user } = response.data;
-  //       document.cookie = `auth_token=${token}; path=/`;
-  //       navig("/home");
-        
-  //     }
-  //   }
-  //   catch (error) {
-  //     if (error.response && error.response.data) {
-  //       console.log(error.response.data.message); // Set error message from backend
-  //     }
-  //     else {
-  //     console.log('An unexpected error occurred'); // Fallback error message
-  //     }
-  //   }
-  // };
+  const signIntoMyAccount = async(e) => {
+    e.preventDefault();
+    try {
+      const authbody = {
+        email:loginMail,
+        password:loginPassword
+      }
+      const response = await api.post(`/api/auth/login`,authbody,{
+        headers:{
+          'Content-Type':'application/json'
+        },
+        withCredentials: true
+      });
+      if (response.status === 200) {
+        const { token, user } = response.data;
+        document.cookie = `auth_token=${token}; path=/`;
+        if(user.usertype === "admin"){
+          navig("/admin");
+        }
+        else{
+          navig("/home");
+        }
+      }
+    }
+    catch (error) {
+      if (error.response && error.response.data) {
+        console.log(error.response.data.message); // Set error message from backend
+      }
+      else {
+      console.log('An unexpected error occurred'); // Fallback error message
+      }
+    }
+  };
 
   return (
     <BoxContainer>
-      <FormContainer>
+      <FormContainer onSubmit={signIntoMyAccount}>
         <Input 
           type="email" 
           value={loginMail}

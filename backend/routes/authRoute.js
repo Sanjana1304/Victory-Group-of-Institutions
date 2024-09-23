@@ -38,6 +38,7 @@ authRouter.post('/login',async(req,res)=>{
             user:{
                 userId:user._id,
                 name: user.name,
+                usertype:user.usertype,
                 email:user.email,
             },
         });
