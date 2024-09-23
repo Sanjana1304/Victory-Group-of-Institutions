@@ -43,3 +43,17 @@ export const fetchUserData = async () => {
       console.error('Error fetching user data:', error);
   }
 };
+
+export const contactUs = async (name,email,phone,message) => {
+  try {
+    const res = await api.post('/api/users/contact', { name,email,phone,message },{
+        headers:{
+            'Content-Type':'application/json',
+        },
+        withCredentials: true,
+    });
+    return "success";
+  } catch (error) {
+    return error.message;
+  }
+}

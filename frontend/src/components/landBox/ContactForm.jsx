@@ -1,10 +1,39 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaClock } from "react-icons/fa6";
+import { contactUs } from '../../api-client';
 
 const ContactForm = () => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [message, setMessage] = useState('');
+
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+
+        try {
+            let res = await register(name, email,phone, message);
+            
+            if(res === "success"){
+              alert("Woohoo! Account created successfully. Use your email and password to login.");
+                setName("");
+                setEmail("");
+                setPhone("");
+                setMessage("");
+            }
+            else{
+              alert("Error sending enquiry");
+            }
+          } catch (error) {
+            console.log(error);
+          }
+
+        console.log(name, email, phone, message);
+    }
+
   return (
     <>
     <h1 className='text-center mb-10 text-3xl text-blue font-bold' id='contact'>Contact Us</h1>
@@ -57,7 +86,7 @@ const ContactForm = () => {
             
         </div>
 
-        <form className='sm:w-[50%] p-2 rounded'>
+        <form className='sm:w-[50%] p-2 rounded' onSubmit={handleSubmit}>
             <div className="form-group flex flex-col w-full">
                 
                 <label htmlFor="name" className='text-xl font-semibold mb-1'>Name</label>
@@ -66,6 +95,9 @@ const ContactForm = () => {
                     className="form-control w-full text-green border border-gray-300 p-2 mb-4 rounded-md transition duration-300 ease-in-out focus:border-blue focus:outline-none font-semibold"
                     id="name"
                     placeholder="Enter your name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
                 />
 
 
@@ -75,6 +107,9 @@ const ContactForm = () => {
                     className="form-control text-green border border-gray-300 p-2 mb-4 rounded-md transition duration-300 ease-in-out focus:border-blue focus:outline-none font-semibold"
                     id="email" 
                     placeholder="Enter your email" 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
                 />
 
                 <label htmlFor="phone" className='text-xl font-semibold mb-1'>Phone</label>
@@ -83,17 +118,25 @@ const ContactForm = () => {
                     className="form-control text-green border border-gray-300 p-2 mb-4 rounded-md transition duration-300 ease-in-out focus:border-blue focus:outline-none font-semibold"
                     id="phone" 
                     placeholder="Enter your phone number" 
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    required
                 />
 
                 <label htmlFor="message" className='text-xl font-semibold mb-1'>Message</label>
                 <textarea 
                     className="form-control text-green border border-gray-300 p-2 mb-4 rounded-md transition duration-300 ease-in-out focus:border-blue focus:outline-none font-semibold"
                     id="message" 
-                    rows="4">
+                    rows="4"
+                    value={message}
+                    required
+                    onChange={(e) => setMessage(e.target.value)} >
                 
                 </textarea>
 
                 <button type="submit" className="btn mt-3 bg-blue p-2 rounded text-white w-[70%] mx-auto">Submit</button>
+
+                <p>Your enquiry has been sent successfully !</p>
             
             </div>
         </form>

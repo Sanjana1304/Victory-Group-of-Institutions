@@ -1,6 +1,7 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const userSchemaModel = require("../schema/userSchemaCode");
+const contactSchemaModel = require("../schema/contactSchemacode");
 const verifyToken = require("../middleware/authMdl");
 
 const userRouter = express.Router();
@@ -47,6 +48,19 @@ userRouter.get('/getMe',verifyToken,async(req,res)=>{
 
         res.status(200).json(record);
     } catch (error) {
+        res.status(500).send(error);
+    }
+})
+
+userRouter.post('/contact',async(req,res)=>{
+    try {
+        const newContactBody = req.body;
+        const newContact = new contactSchemaModel(newContactBody);
+
+        const savedContact = await newContact.save();
+        res.status(200).send("success");
+    } catch (error) {
+        console.log(error.message);
         res.status(500).send(error);
     }
 })
