@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import DataContext from '../context/DataContext'
 
 const AdminHomePage = () => {
+  const {handleSignOut} = useContext(DataContext);
   return (
-    <div>AdminHomePage</div>
+    <div>
+      AdminHomePage
+      <button onClick={handleSignOut}>Logout</button>
+
+    </div>
   )
 }
 
