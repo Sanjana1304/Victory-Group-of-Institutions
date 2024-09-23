@@ -178,6 +178,7 @@ const LandingPage = () => {
                   <a
                     className="relative inline-flex items-center justify-center w-full px-6 py-2 text-base font-normal text-white bg-blue border border-transparent rounded-full"
                     role="button"
+                    href="#contact"
                     
                   >
                     Enquire
