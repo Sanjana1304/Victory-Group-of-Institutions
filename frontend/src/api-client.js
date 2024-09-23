@@ -57,3 +57,17 @@ export const contactUs = async (name,email,phone,message) => {
     return error.message;
   }
 }
+
+export const enrollCourse = async (courseName, courseDescription, coursePrice, courseRegDate, courseDuration,coursePhoto,courseInstructor) => {
+  try {
+    const res = await api.post('/api/users/enroll', { courseName, courseDescription, coursePrice, courseRegDate, courseDuration,coursePhoto,courseInstructor },{
+        headers:{
+            'Content-Type':'application/json',
+        },
+        withCredentials: true,
+    });
+    return "success";
+  } catch (error) {
+    return error.message;
+  }
+}
