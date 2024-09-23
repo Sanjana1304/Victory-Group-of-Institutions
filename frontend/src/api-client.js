@@ -1,8 +1,8 @@
 import api from './api/axiosConfig';
 
-export const register = async (email,name,usertype, password) => {
+export const register = async (email,name,usertype,phone, password) => {
   try {
-    const res = await api.post('/api/users/register', { email,name,usertype, password },{
+    const res = await api.post('/api/users/register', { email,name,usertype,phone, password },{
         headers:{
             'Content-Type':'application/json',
         },

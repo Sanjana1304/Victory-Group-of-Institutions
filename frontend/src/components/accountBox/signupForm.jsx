@@ -18,6 +18,7 @@ export function SignupForm() {
 
   const [signUpFullName,setSignUpFullName] = useState("");
   const [signUpMail,setSignUpMail] = useState("");
+  const [signUpPhone,setSignUpPhone] = useState("");
   const [signUpUsertype,setSignUpUsertype] = useState("");
   const [signUpAdminCode,setSignUpAdminCode] = useState("");
   const [signUpPassword,setSignUpPassword] = useState("");
@@ -35,13 +36,14 @@ export function SignupForm() {
         return;
       }
       try {
-        let res = await register(signUpMail, signUpFullName,signUpUsertype, signUpPassword);
+        let res = await register(signUpMail, signUpFullName,signUpUsertype,signUpPhone, signUpPassword);
         
         if(res === "success"){
           alert("Woohoo! Account created successfully. Use your email and password to login.");
           setSignUpFullName("");
           setSignUpMail("");
           setSignUpUsertype("");
+          setSignUpPhone("");
           setSignUpAdminCode("");
           setSignUpPassword("");
           setSignUpConfirmPassword("");
@@ -69,6 +71,13 @@ export function SignupForm() {
           placeholder="Email" 
           value={signUpMail}
           onChange={(e) => setSignUpMail(e.target.value)}
+          required 
+        />
+        <Input 
+          type="tel" 
+          placeholder="Phone Number" 
+          value={signUpPhone}
+          onChange={(e) => setSignUpPhone(e.target.value)}
           required 
         />
         <Input 

@@ -1,9 +1,20 @@
 import React, { useContext, useState } from 'react'
 import DataContext from '../context/DataContext'
+import api from '../api/axiosConfig';
+import { useQuery } from 'react-query'
+import { fetchUserData } from '../api-client';
 
 const HomePageStudent = () => {
   const [expanded, setExpanded] = useState(false);
   const {handleSignOut} = useContext(DataContext);
+
+  const {data : userdata} = useQuery('fetchUserData',fetchUserData);
+  console.log(userdata);
+
+  const [isEduAdded, setEduAdded] = useState(false);
+  const [isWorkAdded, setWorkAdded] = useState(false);
+
+
 
   return (
     <div>
@@ -154,17 +165,27 @@ const HomePageStudent = () => {
           <p className='text-sm font-normal mt-2 mx-auto'>sensanjana072@gmail.com</p>
           <p className='text-sm font-normal mx-auto'>+91 9876543210</p>
 
-          <div className='mt-4 justify-end mx-auto'>
+          <div className='mt-4 mx-auto'>
             <h1 className='text-xl font-semibold'>Education</h1>
-            <p className='text-sm '>B.Tech in CSE @ PU</p>
-            <p className='text-sm'>12th in Csc @ XYZ School</p>
-            <p className='text-sm'>10th @ ABC School  </p>
+            {
+              !isEduAdded ? 
+              <button className='bg-blue w-max mx-auto mt-1 rounded text-white p-1 text-[10px] cursor-pointer'>Add Education</button>
+              :
+              <div>
+                <p className='text-sm '>B.Tech in CSE @ PU</p>
+              </div>
+            }
             
           </div>
 
-          <div className='mt-4 justify-end mx-auto'>
+          <div className='mt-4 mx-auto flex flex-col justify-center'>
             <h1 className='text-xl font-semibold'>Work Experience</h1>
-            <p className='text-sm'>SDE @ Google</p>
+            {
+              !isWorkAdded ? 
+              <button className='bg-blue w-max mx-auto mt-1 rounded text-white p-1 text-[10px] cursor-pointer'>Add Work Experience</button>
+              :
+              <p className='text-sm'>SDE @ Google</p>
+            }
             
           </div>
         </div>
