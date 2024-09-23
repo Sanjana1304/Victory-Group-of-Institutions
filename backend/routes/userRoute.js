@@ -65,6 +65,24 @@ userRouter.post('/contact',async(req,res)=>{
     }
 })
 
+userRouter.post('/enroll',verifyToken, async(req,res)=>{
+    try {
+        const course = req.body;
+        const userid = req.userId;
+        const record = await userSchemaModel.findById(userid).select("-password");
+
+        if (!record) {
+            return res.status(404).send({ message: 'User not found' });
+        }
+
+        record.courses.push(course);
+        const savedRecord = await record.save();
+        res.status(200).send("success");
+    } catch (error) {
+        res.status(500).send(error);
+    }
+})
+
 // userRouter.put('/editMe',verifyToken,async(req,res)=>{
 //     try {
 //         const useridd = req.userIdd;
@@ -82,5 +100,8 @@ userRouter.post('/contact',async(req,res)=>{
 //         res.status(500).send(error);
 //     }
 // })
+
+
+
 
 module.exports = userRouter;

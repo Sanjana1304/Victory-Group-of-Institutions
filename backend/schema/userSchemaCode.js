@@ -1,6 +1,37 @@
 
 const mongoose = require("mongoose");
 bcrypt = require("bcryptjs");
+
+const courseSchema = new mongoose.Schema({
+    courseName:{
+        type: String,
+        required: true,
+    },
+    courseDescription:{
+        type: String,
+        required: true,
+    },
+    coursePrice:{
+        type: Number,
+        required: true,
+    },
+    courseRegDate:{
+        type: String,
+        required: true,
+    },
+    courseDuration:{
+        type: String,
+        required: true,
+    },
+    coursePhoto:{
+        type: String,
+    },
+    courseInstructor:{
+        type: String,
+        required: true,
+    },
+})
+
 const userSchema = new mongoose.Schema({
     email:{
         unique: true,
@@ -32,9 +63,7 @@ const userSchema = new mongoose.Schema({
     experience:{
         type: String,
     },
-    courses:{
-        type: Array,
-    },
+    courses:[courseSchema],
 
 })
 
