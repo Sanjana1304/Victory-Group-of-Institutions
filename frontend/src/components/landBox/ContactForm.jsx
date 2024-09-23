@@ -11,14 +11,16 @@ const ContactForm = () => {
     const [phone, setPhone] = useState('');
     const [message, setMessage] = useState('');
 
+    const [success, setSuccess] = useState(false);
+
     const handleSubmit = async(e) => {
         e.preventDefault();
 
         try {
-            let res = await register(name, email,phone, message);
+            let res = await contactUs(name, email,phone, message);
             
             if(res === "success"){
-              alert("Woohoo! Account created successfully. Use your email and password to login.");
+                setSuccess(true);
                 setName("");
                 setEmail("");
                 setPhone("");
@@ -30,8 +32,6 @@ const ContactForm = () => {
           } catch (error) {
             console.log(error);
           }
-
-        console.log(name, email, phone, message);
     }
 
   return (
@@ -136,7 +136,7 @@ const ContactForm = () => {
 
                 <button type="submit" className="btn mt-3 bg-blue p-2 rounded text-white w-[70%] mx-auto">Submit</button>
 
-                <p>Your enquiry has been sent successfully !</p>
+                {success && <p style={{ color: '#28a745' }}>Your enquiry has been sent successfully !</p>}
             
             </div>
         </form>
