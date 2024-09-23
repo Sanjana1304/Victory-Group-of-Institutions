@@ -7,7 +7,7 @@ const HomePageStudent = () => {
 
   return (
     <div>
-       <header className="py-4 sm:py-6">
+      <header className="py-4 sm:py-6">
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             {/* App Name */}
@@ -142,7 +142,37 @@ const HomePageStudent = () => {
             </nav>
           )}
         </div>
-        </header>
+      </header>
+
+      <main className='mt-5 w-[92%] mx-auto flex flex-col justify-between sm:flex-row text-[#2d4ca9]'>
+        
+        <div className='w-[100%] sm:w-[27%] border p-4 flex flex-col rounded-lg '>
+          <p className='text-2xl font-semibold mb-3 mx-auto'>Personal Details</p>
+          <img src='https://via.placeholder.com/200' alt='profile' className='mx-auto rounded-full' />
+          <button className='bg-blue w-max mx-auto mt-1 rounded text-white p-1 text-[10px] cursor-pointer'>Add Photo</button>
+          <p className='text-xl font-semibold mt-2 mx-auto'>Sanjana S Acharya</p>
+          <p className='text-sm font-normal mt-2 mx-auto'>sensanjana072@gmail.com</p>
+          <p className='text-sm font-normal mx-auto'>+91 9876543210</p>
+
+          <div className='mt-4 justify-end mx-auto'>
+            <h1 className='text-xl font-semibold'>Education</h1>
+            <p className='text-sm '>B.Tech in CSE @ PU</p>
+            <p className='text-sm'>12th in Csc @ XYZ School</p>
+            <p className='text-sm'>10th @ ABC School  </p>
+            
+          </div>
+
+          <div className='mt-4 justify-end mx-auto'>
+            <h1 className='text-xl font-semibold'>Work Experience</h1>
+            <p className='text-sm'>SDE @ Google</p>
+            
+          </div>
+        </div>
+
+        <div className='w-[100%] sm:w-[70%] border p-4'>
+          bye
+        </div>
+      </main>
     </div>
   )
 }
