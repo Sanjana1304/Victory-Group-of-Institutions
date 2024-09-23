@@ -9,11 +9,6 @@ const HomePageStudent = () => {
   const {handleSignOut} = useContext(DataContext);
 
   const {data : userdata} = useQuery('fetchUserData',fetchUserData);
-  console.log(userdata);
-
-  const [isEduAdded, setEduAdded] = useState(false);
-  const [isWorkAdded, setWorkAdded] = useState(false);
-
 
 
   return (
@@ -191,7 +186,7 @@ const HomePageStudent = () => {
         </div>
 
         <div className='w-[100%] sm:w-[70%] border p-4'>
-          <h1>Courses Enrolled</h1>
+          <h1 className='font-semibold text-xl'>Courses Enrolled</h1>
           {
             userdata.courses.length>0
             ?
@@ -208,7 +203,11 @@ const HomePageStudent = () => {
               }
             </div>
             :
-            <p>'No Courses Enrolled'</p>
+            <>
+            <p className='text-gray-500 mt-5'>Oops ! You haven't enrolled in any Courses yet !</p>
+            <p className='text-blue'>Explore our 50+ courses and enroll ASAP to claim exclusive offers</p>
+            
+            </>
           }
         </div>
       </main>
