@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CourseBox = ({coursename,imgg,desc,coursePrice,courseRegDate,courseDuration,courseInstructor,status}) => {
+const CourseBox = ({coursename,imgg,desc,coursePrice,courseRegDate,courseDuration,courseInstructor,status,enroll}) => {
   return (
     <div className='border shadow flex mb-3 p-2'>
         <div className='p-4'>
@@ -12,6 +12,7 @@ const CourseBox = ({coursename,imgg,desc,coursePrice,courseRegDate,courseDuratio
         <div className='p-4'>
             <h4 className='text-2xl'>{coursename}</h4>
             <p className='text-[11px]'>{desc} <span className='font-bold text-blue'>Get Certfifed</span></p>
+            
             {
               coursePrice
               ?
@@ -32,6 +33,13 @@ const CourseBox = ({coursename,imgg,desc,coursePrice,courseRegDate,courseDuratio
                 }
               </>
               :''
+            }
+
+            {
+              enroll?
+              <button className='bg-blue text-sm p-2 px-4 rounded-lg text-white mt-2'>Enroll</button>
+              :
+              ''
             }
             
             

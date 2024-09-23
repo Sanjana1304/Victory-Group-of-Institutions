@@ -1,7 +1,7 @@
 import React from 'react'
 import CourseBox from './CourseBox'
 
-const AccountSolns = () => {
+const AccountSolns = ({enroll}) => {
   const courses = ["Accounting Basics","Financial Accounting","SAP","Tally ERP","Advanced Accounting","Cost Accounting","Auditing","Taxation","Corporate Finance","Portfolio Management"];
 
   const descriptions = [
@@ -20,7 +20,7 @@ const AccountSolns = () => {
   return (
     <div className='max-h-[500px] overflow-y-scroll'>
       {courses.map((course,index) => {
-        return <CourseBox coursename={course} imgg="/images/accounts.jpg" desc={descriptions[index]}/>
+        return <CourseBox coursename={course} imgg="/images/accounts.jpg" desc={descriptions[index]} enroll={enroll}/>
       })}
     </div>
   )

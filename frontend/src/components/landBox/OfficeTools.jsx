@@ -1,7 +1,7 @@
 import React from 'react'
 import CourseBox from './CourseBox'
 
-const OfficeTools = () => {
+const OfficeTools = ({enroll}) => {
   const courses = ["Microsoft Excel","Advanced Microsoft Excel","Microsoft Word","Microsoft PowerPoint"];
 
   const descriptions = [
@@ -14,7 +14,7 @@ const OfficeTools = () => {
   return (
     <div className='max-h-[500px] overflow-y-scroll'>
       {courses.map((course,index) => {
-        return <CourseBox coursename={course} imgg="/images/msoffice.jpg" desc={descriptions[index]}/>
+        return <CourseBox coursename={course} imgg="/images/msoffice.jpg" desc={descriptions[index]} enroll={enroll}/>
       })}
     </div>
   )

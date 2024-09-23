@@ -1,6 +1,4 @@
 import React, { useContext, useState } from 'react'
-import DataContext from '../context/DataContext'
-import api from '../api/axiosConfig';
 import { useQuery } from 'react-query'
 import { fetchUserData } from '../api-client';
 import CourseBox from '../components/landBox/CourseBox';

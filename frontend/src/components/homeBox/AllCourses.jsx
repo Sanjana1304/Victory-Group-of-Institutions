@@ -15,28 +15,28 @@ const AllCourses = () => {
     const renderContent = () => {
         switch (activeItem) {
             case "Programming & Development":
-              return <PgmDev/>;
+              return <PgmDev enroll={true}/>;
             case "Office Productivity Tools":
-                return <OfficeTools/>
+                return <OfficeTools enroll={true} />
             case "Business & Accounting Solutions":
-                return <AccountSolns/>;
+                return <AccountSolns enroll={true} />;
             case "Spoken Languages":
-                return <SpokenLangs/>;
+                return <SpokenLangs enroll={true} />;
             case "Creative Design & Multimedia":
-                return <DesignCourse/>; ;
+                return <DesignCourse enroll={true} />; ;
             case "Tuitions":
-              return <Tuitions/>; ;
+              return <Tuitions enroll={true} />; ;
             
               case "Summer Camp":
-              return <SummerCamp/>; ;
+              return <SummerCamp enroll={true}/>; ;
             default:
-                return <PgmDev/>;
+                return <PgmDev enroll={true}/>;
         }
       };
   return (
     <>
     <Header/>
-    <section id='courses_offered' className='courses-offered sm:flex w-[90%] mx-auto rounded border mb-10'>
+    <section id='courses_offered' className='mt-2 courses-offered sm:flex w-[90%] mx-auto rounded border mb-10'>
           <a href="#courses_list"><Sidebar activeItem={activeItem} setActiveItem={setActiveItem}/></a>
           <div className="flex-grow p-8" id='courses_list'>
                 {renderContent()}

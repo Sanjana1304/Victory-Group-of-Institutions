@@ -1,7 +1,7 @@
 import React from 'react'
 import CourseBox from './CourseBox'
 
-const PgmDev = () => {
+const PgmDev = ({enroll}) => {
   const courses = ["Problem Solving using Java","Python Programming","C/C++ Programming","Python for Data Science, AI, Machine Learning","Database Management using MySQL","Database Management using MongoDB","Javascript with HTML5 & CSS3","Web Development using Python Django","Web Development using MERN","Web Development using MEAN","Web Development using Flask Python","Web Development using Java Spring Boot","Mobile App Development using Java","Mobile App Development using Kotlin"];
 
   const descriptions = [
@@ -24,7 +24,7 @@ const PgmDev = () => {
   return (
     <div className='max-h-[500px] overflow-y-scroll'>
       {courses.map((course,index) => {
-        return <CourseBox key={index} coursename={course} imgg="/images/comp2.avif" desc={descriptions[index]}/>
+        return <CourseBox key={index} coursename={course} imgg="/images/comp2.avif" desc={descriptions[index]} enroll={enroll}/>
       })}
     </div>
   )

@@ -1,7 +1,7 @@
 import React from 'react'
 import CourseBox from './CourseBox'
 
-const SpokenLangs = () => {
+const SpokenLangs = ({enroll}) => {
   const courses = ["English","Hindi (Spoken / Prathamic / Madhyama / Rashtra Basha)","French","Tamil","German","Japanese"];
 
   const descriptions = [
@@ -16,7 +16,7 @@ const SpokenLangs = () => {
   return (
     <div className='max-h-[500px] overflow-y-scroll'>
       {courses.map((course,index) => {
-        return <CourseBox coursename={course} imgg="/images/spokenlang.jpg" desc={descriptions[index]}/>
+        return <CourseBox coursename={course} imgg="/images/spokenlang.jpg" desc={descriptions[index]} enroll={enroll}/>
       })}
     </div>
   )

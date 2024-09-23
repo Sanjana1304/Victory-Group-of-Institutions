@@ -1,7 +1,7 @@
 import React from 'react'
 import CourseBox from './CourseBox'
 
-const DesignCourse = () => {
+const DesignCourse = ({enroll}) => {
 
   const courses = ["Graphic Design","Web Design","UI/UX Design","Adobe Photoshop","Adobe Illustrator","Adobe XD","Figma","Canva","CorelDRAW"];
 
@@ -21,7 +21,7 @@ const DesignCourse = () => {
   return (
     <div className='max-h-[500px] overflow-y-scroll'>
       {courses.map((course,index) => {
-        return <CourseBox coursename={course} imgg="/images/design.avif" desc={descriptions[index]}/>
+        return <CourseBox coursename={course} imgg="/images/design.avif" desc={descriptions[index]} enroll={enroll}/>
       })}
     </div>
   )
