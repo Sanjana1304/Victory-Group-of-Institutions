@@ -1,16 +1,32 @@
 import React, { useContext, useState } from 'react'
 import DataContext from '../../context/DataContext';
 import { useNavigate } from 'react-router-dom';
+import Modal from '../../layouts/Modal';
+import UserAuth from '../../layouts/UserAuth';
+import SupportForm from './SupportForm';
 
 const Header = () => {
     const {handleSignOut} = useContext(DataContext);
 
     const [expanded, setExpanded] = useState(false);
     const navig = useNavigate();
+    
+    const [isAuthOpen, setIsAuthOpen] = useState(false);
 
     const showAllCourses = () => {
         navig('/home/allcourses');
     }
+
+    const openSupportModal = (e) => {
+        // Open Support Modal
+        e.preventDefault();
+        setIsAuthOpen(true);
+    }
+
+    const closeAuth = () => {
+      setIsAuthOpen(false);
+    };
+
   return (
     <header className="py-4 sm:py-6">
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -94,9 +110,18 @@ const Header = () => {
               <a
                 className="relative inline-flex items-center justify-center px-6 py-2 text-base font-normal text-white bg-blue border border-transparent rounded-full"
                 role="button"
+                onClick={openSupportModal}
               >
                 Help
               </a>
+
+              {
+                isAuthOpen && (
+                  <Modal onClose={closeAuth}>
+                    <SupportForm/>
+                  </Modal>
+                )
+              }
             </div>
 
             <div className="relative hidden md:inline-flex">
