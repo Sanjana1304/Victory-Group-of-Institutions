@@ -72,6 +72,20 @@ export const craftCourse = async (name,email,phone,courseTitle, courseCategory, 
   }
 }
 
+export const support = async (email,message) => {
+  try {
+    const res = await api.post('/api/users/support', { email,message },{
+        headers:{
+            'Content-Type':'application/json',
+        },
+        withCredentials: true,
+    });
+    return "success";
+  } catch (error) {
+    return error.message;
+  }
+}
+
 export const enrollCourse = async (courseName, courseDescription, coursePrice, courseRegDate, courseDuration,coursePhoto,courseInstructor) => {
   try {
     const res = await api.post('/api/users/enroll', { courseName, courseDescription, coursePrice, courseRegDate, courseDuration,coursePhoto,courseInstructor },{
