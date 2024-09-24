@@ -1,13 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { getTestimonials } from '../../api-client';
 
-const testimonialsData = [
-    { id: 1, text: "This is the best service I've ever used!", author: "Priyanka S." },
-    { id: 2, text: "Fantastic experience and wonderful support!", author: "Vicky" },
-    { id: 3, text: "I highly recommend this to everyone!", author: "Divya" },
-];
 
 const Testimonials = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+
+    const [testimonialsData, setTestimonialsData] = useState([]);
+
+    useEffect(() => {
+        // Fetch testimonials from api-client
+        const fetchTestimonials = async () => {
+            const res = await getTestimonials();
+            if (res) {
+                setTestimonialsData(res);
+            }
+        };
+        fetchTestimonials();
+    }, [setTestimonialsData]);
 
     const handleDotClick = (index) => {
         setCurrentIndex(index);
@@ -19,11 +28,11 @@ const Testimonials = () => {
             <div className="testimonial-container relative overflow-hidden w-full flex flex-col justify-center items-center align-items-center">
                 {testimonialsData.map((testimonial, index) => (
                     <div
-                        key={testimonial.id}
+                        key={index}
                         className={`testimonial ${index === currentIndex ? 'block' : 'hidden'}`}
                     >
-                        <p className="text-center mb-5">{`"${testimonial.text}"`}</p>
-                        <p className="text-center">{` - ${testimonial.author}`}</p>
+                        <p className="text-center mb-5">{`"${testimonial.feedback}"`}</p>
+                        <p className="text-center">{` - ${testimonial.name} (Enrolled in ${testimonial.courseName})`}</p>
                     </div>
                 ))}
             </div>

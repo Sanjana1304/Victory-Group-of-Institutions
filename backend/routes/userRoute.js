@@ -141,6 +141,44 @@ userRouter.put('/feedback', verifyToken, async (req, res) => {
     }
 });
 
+userRouter.get('/testimonials', async (req, res) => {
+    try {
+        // Fetch only users that have courses with feedback
+        const usersWithFeedback = await userSchemaModel.find(
+            { "courses.courseFeedback": { $exists: true, $ne: "" } }, // Feedback should exist and not be an empty string
+            { name: 1, courses: 1 } // Fetch user's name and courses array
+        );
+
+        // Prepare an array to hold testimonials
+        const testimonials = [];
+
+        // Loop through users to extract feedback
+        usersWithFeedback.forEach(user => {
+            user.courses.forEach(course => {
+                if (course.courseFeedback && course.courseFeedback.trim() !== "") { // Ensure feedback is not empty or blank
+                    testimonials.push({
+                        name: user.name,
+                        courseName: course.courseName,
+                        feedback: course.courseFeedback
+                    });
+                }
+            });
+        });
+
+        // Return 404 if no testimonials found
+        if (!testimonials.length) {
+            return res.status(404).send({ message: "No feedback found" });
+        }
+
+        // Return the testimonials in response
+        res.status(200).json(testimonials);
+    } catch (error) {
+        res.status(500).send({ message: "Error retrieving testimonials", error });
+    }
+});
+
+
+
 
 userRouter.post('/craft',verifyToken,async(req,res)=>{
     try {

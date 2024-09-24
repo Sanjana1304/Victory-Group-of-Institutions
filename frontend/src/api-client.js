@@ -100,6 +100,20 @@ export const addFeedback = async (courseId, feedback) => {
   }
 }
 
+export const getTestimonials = async () => {
+  try {
+    const res = await api.get('/api/users/testimonials',{
+        headers:{
+            'Content-Type':'application/json',
+        },
+        withCredentials: true,
+    });
+    return res.data;
+  } catch (error) {
+    return error.message;
+  }
+}
+
 export const enrollCourse = async (courseName, courseDescription, coursePrice, courseRegDate, courseDuration,coursePhoto,courseInstructor) => {
   try {
     const res = await api.post('/api/users/enroll', { courseName, courseDescription, coursePrice, courseRegDate, courseDuration,coursePhoto,courseInstructor },{
