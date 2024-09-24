@@ -46,7 +46,7 @@ const ContactForm = () => {
                 
                 <div>
                 <p className='text-xl font-bold mb-2'>Phone</p>
-                <i className='font-bold text-lg'>+91 9962360444</i>
+                <a href="tel:+919962360444"><i className='font-bold text-lg'>+91 9962360444</i></a>
                 </div>
                 
             </div>
@@ -57,7 +57,7 @@ const ContactForm = () => {
                 
                 <div>
                 <p className='text-xl font-bold mb-2'>Email</p>
-                <i className='font-bold text-lg'>vd@gmail.com</i>
+                <a href="mailto:victorygroupofinstitutions@gmail.com"><i className='font-bold text-lg'>victorygroupofinstitutions@gmail.com</i></a>
                 </div>
                 
             </div>
@@ -68,7 +68,7 @@ const ContactForm = () => {
                 
                 <div>
                 <p className='text-xl font-bold mb-2'>Address</p>
-                <i className='font-bold text-lg'>1234 Main St, City, State, 12345</i>
+                <a href='https://maps.app.goo.gl/FMoqDCT6Mzk1EhrJ9'><i className='font-bold text-lg'>Ramakrishnapuram, West Mambalam, Chennai-83, India</i></a>
                 </div>
                 
             </div>

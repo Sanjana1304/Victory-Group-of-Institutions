@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
 const testimonialsData = [
-    { id: 1, text: "This is the best service I've ever used!", author: "Customer 1" },
-    { id: 2, text: "Fantastic experience and wonderful support!", author: "Customer 2" },
-    { id: 3, text: "I highly recommend this to everyone!", author: "Customer 3" },
+    { id: 1, text: "This is the best service I've ever used!", author: "Priyanka S." },
+    { id: 2, text: "Fantastic experience and wonderful support!", author: "Vicky" },
+    { id: 3, text: "I highly recommend this to everyone!", author: "Divya" },
 ];
 
 const Testimonials = () => {

@@ -49,9 +49,11 @@ export function LoginForm() {
     catch (error) {
       if (error.response && error.response.data) {
         console.log(error.response.data.message); // Set error message from backend
+        alert(error.response.data.message);
       }
       else {
       console.log('An unexpected error occurred'); // Fallback error message
+      alert('An unexpected error occurred');
       }
     }
   };

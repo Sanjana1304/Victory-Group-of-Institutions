@@ -21,7 +21,7 @@ const DesignCourse = ({enroll}) => {
   return (
     <div className='max-h-[500px] overflow-y-scroll'>
       {courses.map((course,index) => {
-        return <CourseBox coursename={course} imgg="/images/design.avif" desc={descriptions[index]} enroll={enroll}/>
+        return <CourseBox key={index} coursename={course} imgg="/images/design.avif" desc={descriptions[index]} enroll={enroll}/>
       })}
     </div>
   )

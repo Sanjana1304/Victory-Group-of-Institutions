@@ -95,12 +95,12 @@ const Header = () => {
               >
                 Explore All Courses
               </button>
-              <a href="#aboutus" className="text-base font-normal text-gray-600 transition hover:text-black">
+              <button className="text-base font-normal text-gray-600 transition hover:text-black">
                 Get Project Assistance
-              </a>
-              <a href="#aboutus" className="text-base font-normal text-gray-600 transition hover:text-black">
+              </button>
+              <button className="text-base font-normal text-gray-600 transition hover:text-black">
                 College Admission Guidance
-              </a>
+              </button>
             </nav>
 
             {/* CTA Button */}
@@ -142,17 +142,26 @@ const Header = () => {
           {expanded && (
             <nav className="mt-4">
               <div className="flex flex-col pt-8 pb-4 space-y-6">
-                <button 
+                <a 
                     className="text-base font-normal text-gray-600 transition hover:text-black"
+                    role='button'
                     onClick={showAllCourses}
                 >
                 Explore All Courses
-                </button>
-                <a href="#aboutus" className="text-base font-normal text-gray-600 transition hover:text-black">
+                </a>
+
+                <a 
+                  className="text-base font-normal text-gray-600 transition hover:text-black"
+                  role='button'
+                >
                 
                 Get Project Assistance
                 </a>
-                <a href="#aboutus" className="text-base font-normal text-gray-600 transition hover:text-black">
+
+                <a 
+                  className="text-base font-normal text-gray-600 transition hover:text-black"
+                  role='button'
+                >
                 
                 College Admission Guidance
                 </a>
@@ -162,6 +171,7 @@ const Header = () => {
                   <a
                     className="relative inline-flex items-center justify-center w-full px-6 py-2 text-base font-normal text-white bg-blue border border-transparent rounded-full"
                     role="button"
+                    onClick={openSupportModal}
                   >
                     Help
                   </a>

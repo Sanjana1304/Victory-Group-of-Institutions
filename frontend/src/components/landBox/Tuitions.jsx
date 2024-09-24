@@ -25,7 +25,7 @@ const Tuitions = ({enroll}) => {
      <div className='max-h-[500px] overflow-y-scroll'>
       <h1 className='gont-bold text-lg mb-1'>We provide Tuitions for all classes from I to XII</h1>
       {courses.map((course,index) => {
-        return <CourseBox coursename={course} imgg="/images/tuition.jpg" desc={descriptions[index]} enroll={enroll}/>
+        return <CourseBox key={index} coursename={course} imgg="/images/tuition.jpg" desc={descriptions[index]} enroll={enroll}/>
       })}
     </div>
   )
