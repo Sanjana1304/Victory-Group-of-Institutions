@@ -3,6 +3,8 @@ const jwt = require("jsonwebtoken");
 const userSchemaModel = require("../schema/userSchemaCode");
 const contactSchemaModel = require("../schema/contactSchemacode");
 const verifyToken = require("../middleware/authMdl");
+const courseRequestModel = require("../schema/courseRequestCode");
+const supportSchemaModal = require("../schema/supportSchemaCode");
 
 const userRouter = express.Router();
 
@@ -118,6 +120,33 @@ userRouter.put('/experience',verifyToken,async(req,res)=>{
         res.status(500).send(error);
     }
 })
+
+userRouter.post('/craft',verifyToken,async(req,res)=>{
+    try {
+        const newcraftBody = req.body;
+        const newCraft = new courseRequestModel(newcraftBody);
+
+        const savedCraft = await newCraft.save();
+        res.status(200).send("success");
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send(error);
+    }
+})
+
+userRouter.post('/support',verifyToken,async(req,res)=>{
+    try {
+        const newSupportBody = req.body;
+        const newSupport = new supportSchemaModal(newSupportBody);
+
+        const savedSupport = await newSupport.save();
+        res.status(200).send("success");
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send(error);
+    }
+})
+
 
 // userRouter.put('/editMe',verifyToken,async(req,res)=>{
 //     try {

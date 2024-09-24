@@ -5,7 +5,6 @@ import CourseBox from '../components/landBox/CourseBox';
 
 import Header from '../components/homeBox/Header';
 import Modal from './Modal';
-import UserAuth from './UserAuth';
 import EduForm from '../components/homeBox/EduForm';
 import ExpForm from '../components/homeBox/ExpForm';
 
