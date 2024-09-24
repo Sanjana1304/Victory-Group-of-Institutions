@@ -83,6 +83,24 @@ userRouter.post('/enroll',verifyToken, async(req,res)=>{
     }
 })
 
+userRouter.put('/education',verifyToken,async(req,res)=>{
+    try {
+        const useridd = req.userId;
+        const newEduBody = req.body;
+        const updRec = await userSchemaModel.findByIdAndUpdate(
+            useridd,
+            {education:newEduBody},
+            {new:true}
+        );
+
+        if (!updRec) return res.status(404).send();
+
+        res.status(200).json(updRec);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+})
+
 // userRouter.put('/editMe',verifyToken,async(req,res)=>{
 //     try {
 //         const useridd = req.userIdd;

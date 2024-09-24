@@ -14,6 +14,10 @@ const HomePageStudent = () => {
 
   const [isAuthOpen, setIsAuthOpen] = useState(false);
 
+  const [isEduAdded, setIsEduAdded] = useState(false);
+
+  console.log(userdata);
+
   const addEduForm = () => {
     setIsAuthOpen(true);
   }
@@ -49,23 +53,25 @@ const HomePageStudent = () => {
           <div className='mt-4 mx-auto'>
             <h1 className='text-xl font-semibold'>Education</h1>
             {
-              !userdata?.education?.length>0 ?
-              <button 
+              isEduAdded || userdata?.education?.length>0?
+              <div>
+                <p className='text-sm '>{userdata?.education[0]} - {userdata?.education[1]}</p>
+                <p className='text-sm '>{userdata?.education[2]}, {userdata?.education[3]}</p>
+                <p className='text-sm '>{userdata?.education[4]}%</p>
+              </div>
+              :
+              <button
                 className='bg-blue w-max mx-auto mt-1 rounded text-white p-1 text-[10px] cursor-pointer'
                 onClick={addEduForm}
               >
                 Add Education
               </button>
-              :
-              <div>
-                <p className='text-sm '>{userdata?.education}</p>
-              </div>
             }
             
             {
               isAuthOpen && (
                 <Modal onClose={closeAuth}>
-                    <EduForm/>
+                    <EduForm isEduAdded={isEduAdded} setIsEduAdded ={setIsEduAdded} />
                 </Modal>
               )
             }
