@@ -7,12 +7,15 @@ import Header from '../components/homeBox/Header';
 import Modal from './Modal';
 import UserAuth from './UserAuth';
 import EduForm from '../components/homeBox/EduForm';
+import ExpForm from '../components/homeBox/ExpForm';
 
 
 const HomePageStudent = () => {
   const {data : userdata} = useQuery('fetchUserData',fetchUserData);
 
   const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const [isAuthOpenExp, setIsAuthOpenExp] = useState(false);
+  
 
   const [isEduAdded, setIsEduAdded] = useState(false);
 
@@ -21,9 +24,18 @@ const HomePageStudent = () => {
   const addEduForm = () => {
     setIsAuthOpen(true);
   }
+
+  const addExpForm = () => {
+    setIsAuthOpenExp(true);
+  }
+
   const closeAuth = () => {
     setIsAuthOpen(false);
   };
+
+  const closeAuthExp = () => {
+    setIsAuthOpenExp(false);
+  }
 
   return (
     <div>
@@ -84,10 +96,28 @@ const HomePageStudent = () => {
           <div className='mt-4 mx-auto flex flex-col justify-center'>
             <h1 className='text-xl font-semibold'>Work Experience</h1>
             {
-              !userdata?.experience ? 
-              <button className='bg-blue w-max mx-auto mt-1 rounded text-white p-1 text-[10px] cursor-pointer'>Add Work Experience</button>
+              userdata?.experience?.length>0 ? 
+              <div>
+                <p className='text-sm '>{userdata?.experience[0]} - {userdata?.experience[1]}</p>
+                <p className='text-sm '>{userdata?.experience[2]}, {userdata?.experience[3]}</p>
+                <p className='text-sm '>{userdata?.experience[4]}%</p>
+              </div>
+              
               :
-              <p className='text-sm'>{userdata?.experience}</p>
+              <button 
+                className='bg-blue w-max mx-auto mt-1 rounded text-white p-1 text-[10px] cursor-pointer'
+                onClick={addExpForm}
+              >
+                Add Work Experience
+              </button>
+            }
+
+            {
+              isAuthOpenExp && (
+                <Modal onClose={closeAuthExp}>
+                    <ExpForm />
+                </Modal>
+              )
             }
             
           </div>

@@ -65,7 +65,7 @@ const userSchema = new mongoose.Schema({
         type: [String],
     },
     experience:{
-        type: String,
+        type: [String],
     },
     courses:[courseSchema],
 
