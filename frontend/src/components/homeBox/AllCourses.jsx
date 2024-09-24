@@ -57,6 +57,7 @@ const AllCourses = () => {
                     <label className='text-blue'>Course Title</label>
                     <input type='text' className='w-full border p-2 rounded mt-2' placeholder='Course Title' required/>
                 </div>
+                
                 <div className='mt-4'>
                     <label className='text-blue'>Course Category</label>
                     <select className='w-full border p-2 rounded mt-2'>
@@ -76,8 +77,6 @@ const AllCourses = () => {
                 </div>
 
                 <button className='text-white bg-blue p-2 text-[11px] rounded mt-2'>Request Approval</button>
-
-
             </div>
 
         
