@@ -86,6 +86,20 @@ export const support = async (email,message) => {
   }
 }
 
+export const addFeedback = async (courseId, feedback) => {
+  try {
+    const res = await api.put('/api/users/feedback', { courseId, feedback },{
+        headers:{
+            'Content-Type':'application/json',
+        },
+        withCredentials: true,
+    });
+    return "success";
+  } catch (error) {
+    return error.message;
+  }
+}
+
 export const enrollCourse = async (courseName, courseDescription, coursePrice, courseRegDate, courseDuration,coursePhoto,courseInstructor) => {
   try {
     const res = await api.post('/api/users/enroll', { courseName, courseDescription, coursePrice, courseRegDate, courseDuration,coursePhoto,courseInstructor },{

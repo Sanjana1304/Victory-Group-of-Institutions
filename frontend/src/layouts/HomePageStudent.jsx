@@ -130,7 +130,7 @@ const HomePageStudent = () => {
             <div className='mt-4'>
               {
                 userdata.courses.map((course,index) => {
-                  return <CourseBox key={index} coursename={course.courseName} imgg="/images/comp2.avif" desc={course.courseDescription} coursePrice={course.coursePrice} courseRegDate={course.courseRegDate} courseDuration={course.courseDuration} courseInstructor={course.courseInstructor} status={course.courseStatus}  />
+                  return <CourseBox key={index} coursename={course.courseName} imgg="/images/comp2.avif" desc={course.courseDescription} coursePrice={course.coursePrice} courseRegDate={course.courseRegDate} courseDuration={course.courseDuration} courseInstructor={course.courseInstructor} status={course.courseStatus} courseId= {course._id} courseFeedback = {course.courseFeedback}  />
                 })
               }
             </div>

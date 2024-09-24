@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Modal from '../../layouts/Modal';
+import FeedbackForm from '../homeBox/FeedbackForm';
 
-const CourseBox = ({coursename,imgg,desc,coursePrice,courseRegDate,courseDuration,courseInstructor,status,enroll}) => {
+const CourseBox = ({coursename,imgg,desc,coursePrice,courseRegDate,courseDuration,courseInstructor,status,enroll,courseId,courseFeedback}) => {
 
-  const handleAddFeedback = () => {
-    console.log('Feedback added')
-  }
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
   
+  const handleAddFeedback = () => {
+    setIsAuthOpen(true);
+  }
+
+  const closeAuth = () => {
+    setIsAuthOpen(false);
+  };
+
   return (
     <div className='border shadow flex mb-3 p-2'>
         <div className='p-4'>
@@ -34,7 +42,20 @@ const CourseBox = ({coursename,imgg,desc,coursePrice,courseRegDate,courseDuratio
                   <>
                   <p style={{ color: '#28a745' }}>Status : {status}</p>
                   <button className='bg-blue text-white p-2 text-[10px] rounded-lg mt-2'>View Certificate</button>
-                  <button onClick={handleAddFeedback} className='bg-green text-white p-2 text-[10px] rounded-lg mt-2 ml-2'>Add Feedback</button>
+                  {
+                    courseFeedback?
+                    <p className='mt-2 text-[10px]'>Feedback provided : {courseFeedback}</p>
+                    :
+                    <>
+                    <button onClick={handleAddFeedback} className='bg-green text-white p-2 text-[10px] rounded-lg mt-2 ml-2'>Add Feedback</button>
+                      {isAuthOpen && (
+                        <Modal onClose={closeAuth}>
+                          <FeedbackForm courseId={courseId}/>
+                        </Modal>
+                      )}
+                    </>
+                  }
+                  
                   </>
                 }
               </>
