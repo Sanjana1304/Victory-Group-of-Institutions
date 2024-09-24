@@ -34,6 +34,9 @@ const courseSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    courseFeedback:{
+        type: String,
+    },
 })
 
 const userSchema = new mongoose.Schema({

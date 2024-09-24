@@ -121,6 +121,27 @@ userRouter.put('/experience',verifyToken,async(req,res)=>{
     }
 })
 
+userRouter.put('/feedback', verifyToken, async (req, res) => {
+    try {
+        const userId = req.userId;
+        const { courseId, feedback } = req.body; // Assuming courseId is passed along with feedback
+
+        // Find the user and update the course feedback for the matching course
+        const updRec = await userSchemaModel.findOneAndUpdate(
+            { _id: userId, "courses._id": courseId }, // Match user and specific course by course ID
+            { $set: { "courses.$.courseFeedback": feedback } }, // Update feedback for the matched course
+            { new: true } // Return the updated document
+        );
+
+        if (!updRec) return res.status(404).send({ message: "User or course not found" });
+
+        res.status(200).json(updRec);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+
 userRouter.post('/craft',verifyToken,async(req,res)=>{
     try {
         const newcraftBody = req.body;
@@ -146,6 +167,8 @@ userRouter.post('/support',verifyToken,async(req,res)=>{
         res.status(500).send(error);
     }
 })
+
+
 
 
 // userRouter.put('/editMe',verifyToken,async(req,res)=>{
