@@ -19,7 +19,7 @@ const HomePageStudent = () => {
 
   const [isEduAdded, setIsEduAdded] = useState(false);
 
-  console.log(userdata);
+  //console.log(userdata);
 
   const addEduForm = () => {
     setIsAuthOpen(true);
@@ -99,8 +99,8 @@ const HomePageStudent = () => {
               userdata?.experience?.length>0 ? 
               <div>
                 <p className='text-sm '>{userdata?.experience[0]} - {userdata?.experience[1]}</p>
-                <p className='text-sm '>{userdata?.experience[2]}, {userdata?.experience[3]}</p>
-                <p className='text-sm '>{userdata?.experience[4]}%</p>
+                <p className='text-sm '>{userdata?.experience[2]} - Present</p>
+                
               </div>
               
               :
