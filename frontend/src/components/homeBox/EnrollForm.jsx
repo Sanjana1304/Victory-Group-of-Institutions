@@ -3,9 +3,14 @@ import { enrollCourse } from '../../api-client';
 
 const EnrollForm = ({coursename,desc,fees}) => {
     const [selectedType,setSelectedType] = useState(null); //for course duration
+    const [selectedLoc,setSelectedLoc] = useState(null); //for course location
 
     const handleRadioChange = (e) =>{
         setSelectedType(e.target.value);
+    }
+
+    const handleRadioChange2 = (e) =>{
+        setSelectedLoc(e.target.value);
     }
 
     const handleenrollCourse = async () => {
@@ -23,7 +28,7 @@ const EnrollForm = ({coursename,desc,fees}) => {
         else if (selectedType === '6 Months') {  
             course_fee = fees[2];
         }
-        const res = await enrollCourse(coursename,desc,course_fee,selectedType);
+        const res = await enrollCourse(coursename,desc,course_fee,selectedType,selectedLoc);
         if (res === 'success') {
             alert('Enrolled successfully');
         } else {
@@ -109,6 +114,45 @@ const EnrollForm = ({coursename,desc,fees}) => {
                         <span className='text-gray-600'>Rs. {fees[2]}</span>
                     </label>
                 </div>
+            </div>
+
+            <div className='p-3'>
+                <h1 className=' text-center mb-2'>Course Type </h1>
+                    <div className=' flex justify-center'>
+
+                            
+                    <label
+                        
+                        className={`border p-2 px-6 rounded-lg shadow cursor-pointer
+                            ${selectedLoc === 'Online' ? 'bg-gray-200' : 'bg-white'}`}
+                    >
+                        <input 
+                                type="radio"
+                                value='Online'
+                                required
+                                checked={selectedLoc === 'Online'}
+                                onChange={(e)=>handleRadioChange2(e)}
+                                className="hidden"
+                        />
+                        <span className='font-semibold text-lg'>Online</span>
+                    </label>
+
+                    <label
+                        
+                        className={`ml-5 border p-2 px-6 rounded-lg shadow cursor-pointer
+                            ${selectedLoc === 'Offline' ? 'bg-gray-200' : 'bg-white'}`}
+                    >
+                        <input 
+                                type="radio"
+                                value='Offline'
+                                required
+                                checked={selectedLoc === 'Offline'}
+                                onChange={(e)=>handleRadioChange2(e)}
+                                className="hidden"
+                        />
+                        <span className='font-semibold text-lg'>Offline</span>
+                    </label>
+                    </div>
             </div>
 
             <button onClick={handleenrollCourse} className='flex p-2 px-6 bg-blue mx-auto text-white'>Enroll</button>

@@ -114,7 +114,7 @@ export const getTestimonials = async () => {
   }
 }
 
-export const enrollCourse = async (courseName, courseDescription, coursePrice, courseDuration) => {
+export const enrollCourse = async (courseName, courseDescription, coursePrice, courseDuration,selectedLoc) => {
   const currentDate = new Date();
   const formattedDate = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}-${currentDate.getDate().toString().padStart(2, '0')}`;
   const courseBody = {
@@ -125,6 +125,7 @@ export const enrollCourse = async (courseName, courseDescription, coursePrice, c
     courseDuration: courseDuration,
     courseInstructor: 'To be assigned',
     courseStatus: 'In Progress',
+    courseType: selectedLoc,
     
   }
   try {

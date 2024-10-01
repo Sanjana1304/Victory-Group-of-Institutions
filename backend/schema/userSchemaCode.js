@@ -36,6 +36,9 @@ const courseSchema = new mongoose.Schema({
         type: String,
         default: "In Progress",
     },
+    courseType:{
+        type: String,
+    },
     courseFeedback:{
         type: String,
     },
