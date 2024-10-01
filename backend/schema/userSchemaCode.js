@@ -13,7 +13,6 @@ const courseSchema = new mongoose.Schema({
     },
     coursePrice:{
         type: Number,
-        required: true,
     },
     courseRegDate:{
         type: String,

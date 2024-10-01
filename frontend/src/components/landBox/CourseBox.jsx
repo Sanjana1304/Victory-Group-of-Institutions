@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import Modal from '../../layouts/Modal';
 import FeedbackForm from '../homeBox/FeedbackForm';
+import EnrollForm from '../homeBox/EnrollForm';
 
-const CourseBox = ({coursename,imgg,desc,coursePrice,courseRegDate,courseDuration,courseInstructor,status,enroll,courseId,courseFeedback}) => {
+const CourseBox = ({coursename,imgg,desc,coursePrice,courseRegDate,courseDuration,courseInstructor,status,enroll,courseId,courseFeedback,fees}) => {
 
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   
@@ -13,12 +14,14 @@ const CourseBox = ({coursename,imgg,desc,coursePrice,courseRegDate,courseDuratio
   const closeAuth = () => {
     setIsAuthOpen(false);
   };
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
 
   const handleEnroll = () => {
-    console.log('Enroll button clicked');
-    console.log('Erolled to ',coursename);
-    console.log('Course desc ',desc);
-    
+    setIsEnrollOpen(true);
+  }
+
+  const closeEnroll = () => {
+    setIsEnrollOpen(false);
   }
 
   return (
@@ -71,12 +74,21 @@ const CourseBox = ({coursename,imgg,desc,coursePrice,courseRegDate,courseDuratio
 
             {
               enroll?
+              <>
               <button
               onClick={handleEnroll}
               className='bg-blue text-sm p-2 px-4 rounded-lg text-white mt-2'
               >
                 Enroll
               </button>
+              {
+                isEnrollOpen && (
+                  <Modal onClose={closeEnroll}>
+                   <EnrollForm coursename={coursename} desc={desc} fees={fees} />
+                  </Modal>
+                )
+              }
+              </>
               :
               ''
             }

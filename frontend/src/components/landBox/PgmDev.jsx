@@ -21,10 +21,27 @@ const PgmDev = ({enroll}) => {
     "Our Mobile App Development using Kotlin course provides a comprehensive introduction to Android app development using Kotlin. Learn how to build mobile applications, design user interfaces, and deploy apps to the Google Play Store."
 
   ]
+
+  const fees = [
+    [5000, 7000, 9000],
+    [5000, 7000, 9000],
+    [5000, 7000, 9000],
+    [5000, 7000, 9000],
+    [5000, 7000, 9000],
+    [5000, 7000, 9000],
+    [5000, 7000, 9000],
+    [5000, 7000, 9000],
+    [5000, 7000, 9000],
+    [5000, 7000, 9000],
+    [5000, 7000, 9000],
+    [5000, 7000, 9000],
+    [5000, 7000, 9000],
+    [5000, 7000, 9000]
+  ]
   return (
     <div className='max-h-[500px] overflow-y-scroll'>
       {courses.map((course,index) => {
-        return <CourseBox key={index} coursename={course} imgg="/images/comp2.avif" desc={descriptions[index]} enroll={enroll}/>
+        return <CourseBox key={index} coursename={course} imgg="/images/comp2.avif" desc={descriptions[index]} enroll={enroll} fees={fees[index]}/>
       })}
     </div>
   )

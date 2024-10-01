@@ -178,9 +178,6 @@ userRouter.get('/testimonials', async (req, res) => {
     }
 });
 
-
-
-
 userRouter.post('/craft',verifyToken,async(req,res)=>{
     try {
         const newcraftBody = req.body;

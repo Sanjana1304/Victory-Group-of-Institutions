@@ -6,8 +6,6 @@ const Testimonials = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const [testimonialsData, setTestimonialsData] = useState([]);
-    console.log("hi",testimonialsData);
-
     useEffect(() => {
         // Fetch testimonials from api-client
         const fetchTestimonials = async () => {
