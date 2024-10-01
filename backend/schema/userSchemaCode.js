@@ -28,11 +28,10 @@ const courseSchema = new mongoose.Schema({
     },
     courseInstructor:{
         type: String,
-        required: true,
     },
     courseStatus:{
         type: String,
-        required: true,
+        default: "In Progress",
     },
     courseFeedback:{
         type: String,

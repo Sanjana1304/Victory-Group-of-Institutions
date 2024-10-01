@@ -167,7 +167,8 @@ userRouter.get('/testimonials', async (req, res) => {
 
         // Return 404 if no testimonials found
         if (!testimonials.length) {
-            return res.status(404).send({ message: "No feedback found" });
+            return res.status(200).json([]);
+            //send({ message: "No feedback found" });
         }
 
         // Return the testimonials in response
