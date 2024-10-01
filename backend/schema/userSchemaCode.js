@@ -14,6 +14,10 @@ const courseSchema = new mongoose.Schema({
     coursePrice:{
         type: Number,
     },
+    hasPaid:{
+        type: Boolean,
+        default: false,
+    },
     courseRegDate:{
         type: String,
         required: true,

@@ -114,9 +114,21 @@ export const getTestimonials = async () => {
   }
 }
 
-export const enrollCourse = async (courseName, courseDescription, coursePrice, courseRegDate, courseDuration,coursePhoto,courseInstructor) => {
+export const enrollCourse = async (courseName, courseDescription, coursePrice, courseDuration) => {
+  const currentDate = new Date();
+  const formattedDate = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}-${currentDate.getDate().toString().padStart(2, '0')}`;
+  const courseBody = {
+    courseName: courseName,
+    courseDescription: courseDescription,
+    coursePrice: coursePrice,
+    courseRegDate: formattedDate,
+    courseDuration: courseDuration,
+    courseInstructor: 'To be assigned',
+    courseStatus: 'In Progress',
+    
+  }
   try {
-    const res = await api.post('/api/users/enroll', { courseName, courseDescription, coursePrice, courseRegDate, courseDuration,coursePhoto,courseInstructor },{
+    const res = await api.post('/api/users/enroll', courseBody,{
         headers:{
             'Content-Type':'application/json',
         },

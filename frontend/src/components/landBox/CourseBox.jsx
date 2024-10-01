@@ -46,7 +46,7 @@ const CourseBox = ({coursename,imgg,desc,coursePrice,courseRegDate,courseDuratio
                 <p>Instructor : {courseInstructor}</p>
 
                 {
-                  status === "In progress"?
+                  status === "In Progress"?
                   <p className='text-red'>Status : {status}</p>
                   :
                   <>

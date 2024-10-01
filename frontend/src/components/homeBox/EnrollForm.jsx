@@ -8,17 +8,29 @@ const EnrollForm = ({coursename,desc,fees}) => {
         setSelectedType(e.target.value);
     }
 
-    const enrollCourse = async () => {
-        // if(selectedType){
-        //     const course = {
-        //         coursename,
-        //         duration:selectedType,
-        //         fees:fees[0]
-        //     }
-        //     const response = await enrollCourse(course);
-        //     console.log(response);
-        // }
-        console.log('Enrolled in ',coursename,' for ',selectedType,' with fees Rs.',fees[0]);
+    const handleenrollCourse = async () => {
+        if (!selectedType) {
+            alert('Please select course duration');
+            return;
+        }
+        let course_fee = 0;
+        if (selectedType === '45 Days') {
+            course_fee = fees[0];
+        }
+        else if (selectedType === '3 Months') {
+            course_fee = fees[1];
+        }
+        else if (selectedType === '6 Months') {  
+            course_fee = fees[2];
+        }
+        const res = await enrollCourse(coursename,desc,course_fee,selectedType);
+        if (res === 'success') {
+            alert('Enrolled successfully');
+        } else {
+            alert('Error enrolling in course');
+        }
+
+        //console.log('Enrolled in ',coursename,' for ',selectedType,' with fees Rs.',fees[0]);
     }
 
   return (
@@ -99,7 +111,7 @@ const EnrollForm = ({coursename,desc,fees}) => {
                 </div>
             </div>
 
-            <button onClick={enrollCourse} className='flex p-2 px-6 bg-blue mx-auto text-white'>Enroll</button>
+            <button onClick={handleenrollCourse} className='flex p-2 px-6 bg-blue mx-auto text-white'>Enroll</button>
             <br />
         </div>
     </div>
