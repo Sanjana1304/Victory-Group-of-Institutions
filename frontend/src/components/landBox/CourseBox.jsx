@@ -14,6 +14,13 @@ const CourseBox = ({coursename,imgg,desc,coursePrice,courseRegDate,courseDuratio
     setIsAuthOpen(false);
   };
 
+  const handleEnroll = () => {
+    console.log('Enroll button clicked');
+    console.log('Erolled to ',coursename);
+    console.log('Course desc ',desc);
+    
+  }
+
   return (
     <div className='border shadow flex mb-3 p-2'>
         <div className='p-4'>
@@ -64,7 +71,12 @@ const CourseBox = ({coursename,imgg,desc,coursePrice,courseRegDate,courseDuratio
 
             {
               enroll?
-              <button className='bg-blue text-sm p-2 px-4 rounded-lg text-white mt-2'>Enroll</button>
+              <button
+              onClick={handleEnroll}
+              className='bg-blue text-sm p-2 px-4 rounded-lg text-white mt-2'
+              >
+                Enroll
+              </button>
               :
               ''
             }
