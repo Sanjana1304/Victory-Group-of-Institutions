@@ -26,9 +26,6 @@ const courseSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    coursePhoto:{
-        type: String,
-    },
     courseInstructor:{
         type: String,
     },

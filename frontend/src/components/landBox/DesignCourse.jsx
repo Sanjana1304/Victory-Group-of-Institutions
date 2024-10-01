@@ -17,11 +17,23 @@ const DesignCourse = ({enroll}) => {
     "Our CorelDRAW course provides a comprehensive introduction to CorelDRAW, a popular vector graphics software. Learn how to create illustrations, logos, and designs using CorelDRAW."
   ]
 
+  const fees = [
+    [2000, 3000, 4000],
+    [3000, 4000, 5000],
+    [5000, 7000, 9000],
+    [4000, 6000, 8000],
+    [2500, 3500, 4500],
+    [2500, 3500, 4500],
+    [2500, 3500, 4500],
+    [2500, 3500, 4500],
+    [2500, 3500, 4500],
+  ]
+
 
   return (
     <div className='max-h-[500px] overflow-y-scroll'>
       {courses.map((course,index) => {
-        return <CourseBox key={index} coursename={course} imgg="/images/design.avif" desc={descriptions[index]} enroll={enroll}/>
+        return <CourseBox key={index} coursename={course} imgg="/images/design.avif" desc={descriptions[index]} enroll={enroll} fees={fees[index]}/>
       })}
     </div>
   )

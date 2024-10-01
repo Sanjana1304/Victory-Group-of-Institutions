@@ -17,10 +17,23 @@ const AccountSolns = ({enroll}) => {
     "Our Portfolio Management course provides a comprehensive introduction to portfolio management principles and practices. Learn how to construct investment portfolios, analyze asset classes, and optimize investment"
   ]
 
+  const fees = [
+    [2000, 3000, 4000],
+    [3000, 4000, 5000],
+    [5000, 7000, 9000],
+    [4000, 6000, 8000],
+    [2500, 3500, 4500],
+    [2500, 3500, 4500],
+    [2500, 3500, 4500],
+    [2500, 3500, 4500],
+    [2500, 3500, 4500],
+    [2500, 3500, 4500],
+  ]
+
   return (
     <div className='max-h-[500px] overflow-y-scroll'>
       {courses.map((course,index) => {
-        return <CourseBox coursename={course} imgg="/images/accounts.jpg" desc={descriptions[index]} enroll={enroll}/>
+        return <CourseBox key={index} coursename={course} imgg="/images/accounts.jpg" desc={descriptions[index]} enroll={enroll} fees={fees[index]}/>
       })}
     </div>
   )

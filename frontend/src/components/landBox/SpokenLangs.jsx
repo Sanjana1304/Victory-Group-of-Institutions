@@ -13,10 +13,19 @@ const SpokenLangs = ({enroll}) => {
     "Our Japanese course provides a comprehensive introduction to the Japanese language. Learn how to speak, read, and write in Japanese with confidence and fluency."
   ]
 
+  const fees = [
+    [2500, 3000, 5000],
+    [3000, 4000, 5500],
+    [3000, 4000, 6000],
+    [1000, 2000, 3000],
+    [1000, 2000, 3000],
+    [1000, 2000, 3000],
+  ]
+
   return (
     <div className='max-h-[500px] overflow-y-scroll'>
       {courses.map((course,index) => {
-        return <CourseBox key={index} coursename={course} imgg="/images/spokenlang.jpg" desc={descriptions[index]} enroll={enroll}/>
+        return <CourseBox key={index} coursename={course} imgg="/images/spokenlang.jpg" desc={descriptions[index]} enroll={enroll} fees={fees[index]}/>
       })}
     </div>
   )

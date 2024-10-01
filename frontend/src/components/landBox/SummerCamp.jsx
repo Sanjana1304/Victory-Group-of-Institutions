@@ -17,10 +17,22 @@ const SummerCamp = ({enroll}) => {
     "Our Science Experiments camp provides a hands-on experience for children to explore different scientific concepts and phenomena. Learn how to conduct experiments, make observations, and draw conclusions through interactive science activities."
   ]
 
+  const fees = [
+    [2000, 3000, 4000],
+    [3000, 4000, 5000],
+    [3000, 4000, 6000],
+    [1000, 2000, 3000],
+    [1000, 2000, 3000],
+    [1000, 2000, 3000],
+    [5000, 7000, 9000],
+    [5000, 7000, 9000],
+    [5000, 7000, 9000],
+  ]
+
   return (
     <div className='max-h-[500px] overflow-y-scroll'>
       {courses.map((course,index) => {
-        return <CourseBox key={index} coursename={course} imgg="/images/summercamp.webp" desc={descriptions[index]} enroll={enroll}/>
+        return <CourseBox key={index} coursename={course} imgg="/images/summercamp.webp" desc={descriptions[index]} enroll={enroll} fees={fees[index]}/>
       })}
     </div>
   )

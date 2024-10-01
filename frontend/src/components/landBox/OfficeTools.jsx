@@ -12,10 +12,18 @@ const OfficeTools = ({enroll}) => {
     "Our Microsoft PowerPoint course provides a comprehensive introduction to PowerPoint, a powerful presentation application. Learn how to create, design, and deliver professional presentations using PowerPoint's advanced features.",
   ]
 
+  const fees = [
+    [4000, 5000, 6000],
+    [3000, 4000, 6000],
+    [3000, 4000, 6000],
+    [1000, 2000, 3000],
+    [1000, 2000, 3000],
+  ]
+
   return (
     <div className='max-h-[500px] overflow-y-scroll'>
       {courses.map((course,index) => {
-        return <CourseBox key={index} coursename={course} imgg="/images/msoffice.jpg" desc={descriptions[index]} enroll={enroll}/>
+        return <CourseBox key={index} coursename={course} imgg="/images/msoffice.jpg" desc={descriptions[index]} enroll={enroll} fees={fees[index]}/>
       })}
     </div>
   )

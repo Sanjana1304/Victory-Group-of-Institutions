@@ -20,12 +20,30 @@ const Tuitions = ({enroll}) => {
     "Our Hindi tuition classes are designed to help students master the principles of Hindi language, literature, and culture. Learn how to improve reading comprehension, enhance writing skills, and develop critical thinking through Hindi language studies."
   ]
 
+  const fees = [
+    [2000, 3000, 4000],
+    [3000, 4000, 5000],
+    [5000, 7000, 9000],
+    [4000, 6000, 8000],
+    [2500, 3500, 4500],
+    [2500, 3500, 4500],
+    [2500, 3500, 4500],
+    [2500, 3500, 4500],
+    [2500, 3500, 4500],
+    [2500, 3500, 4500],
+    [2500, 3500, 4500],
+    [2500, 3500, 4500],
+    [2500, 3500, 4500]
+  ]
+
+
+
 
   return (
      <div className='max-h-[500px] overflow-y-scroll'>
       <h1 className='gont-bold text-lg mb-1'>We provide Tuitions for all classes from I to XII</h1>
       {courses.map((course,index) => {
-        return <CourseBox key={index} coursename={course} imgg="/images/tuition.jpg" desc={descriptions[index]} enroll={enroll}/>
+        return <CourseBox key={index} coursename={course} imgg="/images/tuition.jpg" desc={descriptions[index]} enroll={enroll} fees={fees[index]}/>
       })}
     </div>
   )
