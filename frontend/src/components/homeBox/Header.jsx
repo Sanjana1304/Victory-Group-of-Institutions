@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react'
 import DataContext from '../../context/DataContext';
 import { useNavigate } from 'react-router-dom';
 import Modal from '../../layouts/Modal';
-import UserAuth from '../../layouts/UserAuth';
 import SupportForm from './SupportForm';
 
 const Header = () => {
@@ -18,7 +17,6 @@ const Header = () => {
     }
 
     const openSupportModal = (e) => {
-        // Open Support Modal
         e.preventDefault();
         setIsAuthOpen(true);
     }
