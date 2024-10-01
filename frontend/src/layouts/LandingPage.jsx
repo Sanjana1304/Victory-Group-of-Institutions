@@ -321,10 +321,10 @@ const LandingPage = () => {
         <footer className='bg-blue text-white'>
             <div className='flex flex-col sm:flex-row p-4 justify-between'>
                 <p className='font-bold'>VGI</p>
-                <p>Address: 123, XYZ Street, ABC City</p>
+                <p>Address: Ramakrishnapuram, West Mambalam, Chennai-83, India</p>
                 <p>Phone: +91 9962360444</p>
                 <p>Email: 
-                    <a href='mailto:' className='ml-1'>victorygroupofinstitutions@gmail.com</a>
+                    <a href='mailto:victorygroupofinstitutions@gmail.com' className='ml-1'>victorygroupofinstitutions@gmail.com</a>
                 </p>
             </div>
         </footer>
