@@ -56,4 +56,17 @@ adminRouter.put('/markPaid',verifyToken,async(req,res)=>{
     }
 })
 
+//course status change to completed
+adminRouter.put('/markCompleted',verifyToken,async(req,res)=>{
+    try {
+        const user = await userSchemaModel.findOne({email:req.body.email});
+        const course = user.courses.id(req.body.courseId);
+        course.courseStatus = 'Completed';
+        await user.save();
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+})
+
 module.exports = adminRouter;

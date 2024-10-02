@@ -212,3 +212,18 @@ export const markPaid = async (email,courseId) => {
     return error.message;
   }
 }
+
+//course status change to completed
+export const markCompleted = async (email,courseId) => {
+  try {
+    const res = await api.put('/api/admin/markCompleted', { email, courseId },{
+        headers:{
+            'Content-Type':'application/json',
+        },
+        withCredentials: true,
+    });
+    return "success";
+  } catch (error) {
+    return error.message;
+  }
+}
