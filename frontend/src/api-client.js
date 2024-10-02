@@ -169,3 +169,31 @@ export const getAllCourseRequests = async () => {
     return error.message;
   }
 }
+
+export const getAllStudentSupport = async () => {
+  try {
+    const res = await api.get('/api/admin/getAllStudentSupport',{
+        headers:{
+            'Content-Type':'application/json',
+        },
+        withCredentials: true,
+    });
+    return res.data;
+  } catch (error) {
+    return error.message;
+  }
+}
+
+export const getAllEnquiries = async () => {
+  try {
+    const res = await api.get('/api/admin/getAllEnquiries',{
+        headers:{
+            'Content-Type':'application/json',
+        },
+        withCredentials: true,
+    });
+    return res.data;
+  } catch (error) {
+    return error.message;
+  }
+}

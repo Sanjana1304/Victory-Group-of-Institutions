@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 
 const supportSchema = new mongoose.Schema({
+    name:{
+        type: String,
+    },
     email:{
         type: String,
         required: true,

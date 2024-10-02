@@ -3,6 +3,7 @@ const verifyToken = require("../middleware/authMdl");
 const userSchemaModel = require("../schema/userSchemaCode");
 const courseRequestModel = require("../schema/courseRequestCode");
 const supportSchemaModal = require("../schema/supportSchemaCode");
+const contactSchemaModel = require("../schema/contactSchemacode");
 
 const adminRouter = express.Router();
 
@@ -27,6 +28,15 @@ adminRouter.get('/getAllCourseRequests',verifyToken,async(req,res)=>{
 adminRouter.get('/getAllStudentSupport',verifyToken,async(req,res)=>{
     try {
         const users = await supportSchemaModal.find();
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+})
+
+adminRouter.get('/getAllEnquiries',verifyToken,async(req,res)=>{
+    try {
+        const users = await contactSchemaModel.find();
         res.status(200).json(users);
     } catch (error) {
         res.status(500).send(error);

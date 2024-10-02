@@ -16,7 +16,11 @@ const contactSchema = new mongoose.Schema({
     message:{
         type: String,
         required: true,
-    }
+    },
+    status:{
+        type: String,
+        default: "open",
+    },
 })
 
 const contactSchemaModel = mongoose.model('enquiries',contactSchema);

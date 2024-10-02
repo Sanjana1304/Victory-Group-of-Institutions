@@ -1,8 +1,90 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { getAllEnquiries } from '../../api-client';
 
 const GeneralEnquiries = () => {
+
+  const [genEnquiry, setGenEnquiry] = useState([]);
+  const [closedEnquiry, setClosedEnquiry] = useState([]);
+  const [openEnquiry, setOpenEnquiry] = useState([]);
+
+  useEffect(() => {
+    const fetchGenEnquiry = async () => {
+      const res = await getAllEnquiries();
+      setGenEnquiry(res);
+    }
+    fetchGenEnquiry();
+  })
+
+  useEffect(() => {
+    // Split the support requests into pending and resolved arrays
+    if (genEnquiry.length) {
+      const open = genEnquiry.filter(request => request.status === 'pending');
+      const closed = genEnquiry.filter(request => request.status === 'resolved');
+      
+      setOpenEnquiry(open);
+      setClosedEnquiry(closed);
+    }
+  },[genEnquiry]);
+
   return (
-    <div>GeneralEnquiries</div>
+    <div>
+      <div className='bg-white p-3'>
+        <h1 className=' mb-5 font-semibold text-gray-600'>Open Tickets</h1>
+        <p className='border-b mb-6'></p>
+        <div className='max-h-[300px] overflow-y-scroll'>
+          <table className="text-sm min-w-full bg-white">
+            <thead>
+              <tr>
+                <th className="px-4 py-3 border-b text-start">Name</th>
+                <th className="px-4 py-3 border-b text-start">Phone</th>
+                <th className="px-4 py-3 border-b text-start">Email</th>
+                <th className="px-4 py-3 border-b text-start">Message</th>
+                <th className="px-4 py-3 border-b text-start">Action</th>
+              </tr>
+            </thead>
+            <tbody className='text-sm text-gray-700'>
+              {
+                openEnquiry.map((enquiry, index) => (
+                  <tr key={index}>
+                    <td className="p-4 border-b font-semibold">{enquiry.name}</td>
+                    <td className="p-4 border-b">{enquiry.phone}</td>
+                    <td className="p-4 border-b">{enquiry.email}</td>
+                    <td className="p-4 border-b">{enquiry.message}</td>
+                    <td className="p-4 border-b"><button className='p-1 px-2 bg-red text-[10px] rounded text-white'>Close Enquiry</button></td>
+                  </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div className='bg-white p-3 mt-6'>
+        <h1 className='mt-1 mb-5 font-semibold text-gray-600'>Closed Tickets</h1>
+        <p className='border-b mb-6'></p>
+        <div className='max-h-[300px] overflow-y-scroll'>
+          <table className="text-sm min-w-full bg-white">
+              <thead>
+                <tr>
+                  <th className="px-4 py-3 border-b text-start">Name</th>
+                  <th className="px-4 py-3 border-b text-start">Email</th>
+                  <th className="px-4 py-3 border-b text-start">Message</th>
+                </tr>
+              </thead>
+              <tbody className='text-sm text-gray-700'>
+                {
+                  closedEnquiry.map((enquiry, index) => (
+                    <tr key={index}>
+                      <td className="p-4 border-b font-semibold">{enquiry.name}</td>
+                      <td className="p-4 border-b">{enquiry.email}</td>
+                      <td className="p-4 border-b">{enquiry.message}</td>
+                    </tr>
+                ))}
+              </tbody>
+          </table>
+        </div>
+        <div>
+        </div>
+      </div>
+    </div>
   )
 }
 

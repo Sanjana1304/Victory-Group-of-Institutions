@@ -85,7 +85,7 @@ const AdminHomePage = () => {
     const fetchAllStudents = async () => {
       const res = await getAllStudents();  // Your API call to fetch students
       setAllStudents(res);
-      console.log("All studs:",res);
+      
 
       // Process the data after fetching the students
       const inProgress = processStudentsByCourseStatus(res, "In Progress");
@@ -94,11 +94,11 @@ const AdminHomePage = () => {
 
       // Set the state with the processed data
       setInProgressStudents(inProgress);
-      console.log("In progress:",inProgress);
+      
       setCompletedStudents(completed);
-      console.log("Completed:",completed);
+      
       setStudentsWithNoCourses(noCourses);
-      console.log("No courses:",noCourses);
+      
     };
 
     fetchAllStudents();
