@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import DataContext from '../context/DataContext'
 import Sidebar from '../components/adminBox/SideBar';
 import Dashboard from '../components/adminBox/Dashboard';
@@ -9,9 +9,52 @@ import GeneralEnquiries from '../components/adminBox/GeneralEnquiries';
 import { useNavigate } from 'react-router-dom';
 import RegisteredUsers from '../components/adminBox/RegisteredUsers';
 import PrevStuds from '../components/adminBox/PrevStuds';
+import { getAllStudents } from '../api-client';
 
 const AdminHomePage = () => {
   const [activeItem, setActiveItem] = useState("Dashboard");
+
+  const [allStudents, setAllStudents] = useState([]);
+  const [inProgressStudents, setInProgressStudents] = useState([]);
+  const [completedStudents, setCompletedStudents] = useState([]);
+  const [studentsWithNoCourses, setStudentsWithNoCourses] = useState([]);
+
+  // Function to split students based on course status
+  const processStudentsByCourseStatus = (students, status) => {
+    const result = [];
+
+    students.forEach(student => {
+      if (student.courses && student.courses.length > 0) {
+        student.courses.forEach(course => {
+          if (course.courseStatus === status) {
+            // Create a new entry for each course with the same student info
+            result.push({
+              _id: student._id,
+              name: student.name,
+              email: student.email,
+              phone: student.phone,
+              course: {
+                courseName: course.courseName,
+                courseStatus: course.courseStatus,
+                courseDuration: course.courseDuration,
+                courseInstructor: course.courseInstructor,
+                courseEnrollDate: course.courseEnrollDate,
+                coursePrice: course.coursePrice,
+                hasPaid: course.hasPaid,
+                courseType: course.courseType
+              }
+            });
+          }
+        });
+      }
+    });
+
+    return result;
+  };
+
+  const getStudentsWithNoCourses = (students) => {
+    return students.filter(student => !student.courses || student.courses.length === 0);
+  };
 
   const navig = useNavigate();
   
@@ -20,7 +63,9 @@ const AdminHomePage = () => {
         case "Dashboard":
           return <Dashboard />;
         case "Enrolled Students":
-            return <EnrolledStuds />
+            return <EnrolledStuds inProgressStudents={inProgressStudents} />
+        case "Registered Users":
+            return <RegisteredUsers studentsWithNoCourses={studentsWithNoCourses}/>
         case "Course Requests":
             return <CourseReqs />;
         case "Student Support":
@@ -28,14 +73,38 @@ const AdminHomePage = () => {
         case "General Enquiries":
             return <GeneralEnquiries />;
         
-        case "Registered Users":
-            return <RegisteredUsers/>
+        
         case "Previous Students":
-            return <PrevStuds />;
+            return <PrevStuds completedStudents={completedStudents} />;
         default:
             return <Dashboard />;
     }
   };
+
+  useEffect(() => {
+    const fetchAllStudents = async () => {
+      const res = await getAllStudents();  // Your API call to fetch students
+      setAllStudents(res);
+      console.log("All studs:",res);
+
+      // Process the data after fetching the students
+      const inProgress = processStudentsByCourseStatus(res, "In Progress");
+      const completed = processStudentsByCourseStatus(res, "Completed");
+      const noCourses = getStudentsWithNoCourses(res);
+
+      // Set the state with the processed data
+      setInProgressStudents(inProgress);
+      console.log("In progress:",inProgress);
+      setCompletedStudents(completed);
+      console.log("Completed:",completed);
+      setStudentsWithNoCourses(noCourses);
+      console.log("No courses:",noCourses);
+    };
+
+    fetchAllStudents();
+  }, []);
+
+
   
 
   const {handleSignOut} = useContext(DataContext);

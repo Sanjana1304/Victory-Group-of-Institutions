@@ -7,6 +7,7 @@ const express = require('express');
 const userRouter = require("./routes/userRoute");
 const authRouter = require("./routes/authRoute");
 const verifyToken = require("./middleware/authMdl");
+const adminRouter = require('./routes/adminRoute');
 
 const app = express();
 app.use(cookieParser());
@@ -58,6 +59,7 @@ app.get('/', (req, res) => {
 
 app.use("/api/auth",authRouter);
 app.use("/api/users",userRouter);
+app.use("/api/admin",adminRouter);
 
 app.get('/protectedRoute', verifyToken, (req, res) => {
   res.json({ message: 'This is a protected route', user: req.user });

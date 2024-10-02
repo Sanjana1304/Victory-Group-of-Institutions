@@ -141,3 +141,17 @@ export const enrollCourse = async (courseName, courseDescription, coursePrice, c
     return error.message;
   }
 }
+
+export const getAllStudents = async () => {
+  try {
+    const res = await api.get('/api/admin/getAllStudents',{
+        headers:{
+            'Content-Type':'application/json',
+        },
+        withCredentials: true,
+    });
+    return res.data;
+  } catch (error) {
+    return error.message;
+  }
+}
