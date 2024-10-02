@@ -1,9 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
+import ModalConfirm from './ModalConfirm';
+import { markPaid } from '../../api-client';
 
 const EnrolledStuds = ({inProgressStudents}) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [feeMarkStudMail, setFeeMarkStudMail] = useState('');
+  const [feeMarkCourseId, setFeeMarkCourseId] = useState('');
 
   const handleMarkPaid = (email,courseId) => {
     console.log(email,courseId);
+    setFeeMarkStudMail(email);
+    setFeeMarkCourseId(courseId);
+    setIsModalOpen(true);
+  }
+
+  const confirmPayment = async() => {
+    try {
+      // Call the markPaid API
+      await markPaid(feeMarkStudMail, feeMarkCourseId);
+      alert('Payment marked successfully');
+      setFeeMarkCourseId('');
+      setFeeMarkStudMail('');
+
+      
+    } catch (error) {
+      alert('Error marking payment:', error);
+      
+    }
+    setIsModalOpen(false);
+    
   }
   
   return (
@@ -36,12 +62,19 @@ const EnrolledStuds = ({inProgressStudents}) => {
             <td className="p-4 border-b">{student.course.hasPaid?<span className=' font-semibold'>Paid</span>:<span className='text-red font-semibold'>Pending<button className='mt-1 text-white bg-blue text-[8px] px-1' onClick={()=>handleMarkPaid(student.email,student.course.courseId)}>Mark Paid</button></span>}</td>
             <td className="p-4 border-b">{student.course.courseType}</td>
             <td className="p-4 border-b">{student.phone} <a href={`mailto:${student.email}`} className='text-blue'>{student.email}</a></td>
-            <td className="p-4 border-b py-6"><button className='p-1 px-2 bg-red text-[10px] rounded text-white'>Remove</button><button className='mt-1 p-1 px-3 bg-blue text-[10px] rounded text-white'>Finish</button></td>
+            <td className="p-4 border-b py-6"><button className='mt-1 p-1 px-3 bg-blue text-[10px] rounded text-white'>Finish</button></td>
             
           </tr>
         ))}
       </tbody>
     </table>
+
+    <ModalConfirm
+      isOpen={isModalOpen}
+      onClose={() => setIsModalOpen(false)}
+      onConfirm={() => confirmPayment()}
+      message="Are you sure you want to mark this student as paid?"
+    />
   </div>
   )
 }

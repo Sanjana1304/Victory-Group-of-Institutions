@@ -197,3 +197,18 @@ export const getAllEnquiries = async () => {
     return error.message;
   }
 }
+
+//fee payment status change
+export const markPaid = async (email,courseId) => {
+  try {
+    const res = await api.put('/api/admin/markPaid', { email, courseId },{
+        headers:{
+            'Content-Type':'application/json',
+        },
+        withCredentials: true,
+    });
+    return "success";
+  } catch (error) {
+    return error.message;
+  }
+}
