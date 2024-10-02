@@ -10,6 +10,10 @@ const supportSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    status:{
+        type: String,
+        default: "pending",
+    },
 })
 
 const supportSchemaModal = mongoose.model('support',supportSchema);

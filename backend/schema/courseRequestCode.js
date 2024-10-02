@@ -24,6 +24,10 @@ const courseRequestSchema = new mongoose.Schema({
     courseDescription:{
         type: String,
     },
+    requestStatus:{
+        type: String,
+        default: "pending",
+    },
 })
 
 const courseRequestModel = mongoose.model('course_requests',courseRequestSchema);

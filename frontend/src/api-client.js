@@ -155,3 +155,17 @@ export const getAllStudents = async () => {
     return error.message;
   }
 }
+
+export const getAllCourseRequests = async () => {
+  try {
+    const res = await api.get('/api/admin/getAllCourseRequests',{
+        headers:{
+            'Content-Type':'application/json',
+        },
+        withCredentials: true,
+    });
+    return res.data;
+  } catch (error) {
+    return error.message;
+  }
+}
