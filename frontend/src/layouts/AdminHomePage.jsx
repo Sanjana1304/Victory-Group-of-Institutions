@@ -8,6 +8,7 @@ import StudentSupport from '../components/adminBox/StudentSupport';
 import GeneralEnquiries from '../components/adminBox/GeneralEnquiries';
 import { useNavigate } from 'react-router-dom';
 import RegisteredUsers from '../components/adminBox/RegisteredUsers';
+import PrevStuds from '../components/adminBox/PrevStuds';
 
 const AdminHomePage = () => {
   const [activeItem, setActiveItem] = useState("Dashboard");
@@ -29,6 +30,8 @@ const AdminHomePage = () => {
         
         case "Registered Users":
             return <RegisteredUsers/>
+        case "Previous Students":
+            return <PrevStuds />;
         default:
             return <Dashboard />;
     }
@@ -57,7 +60,7 @@ const AdminHomePage = () => {
 
       <section id='courses_offered' className='mt-[1.7px] courses-offered sm:flex rounded'>
           <Sidebar activeItem={activeItem} setActiveItem={setActiveItem}/>
-          <div className="flex-grow p-8" id='courses_list'>
+          <div className="flex-grow p-3 bg-gray-100" id='courses_list'>
                 {renderContent()}
                 
           </div>

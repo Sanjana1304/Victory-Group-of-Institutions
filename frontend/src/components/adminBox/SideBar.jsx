@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Sidebar = ({activeItem,setActiveItem}) => {
-    const options = ["Dashboard","Enrolled Students","Registered Users","Course Requests","Student Support","General Enquiries"]
+    const options = ["Dashboard","Enrolled Students","Registered Users","Course Requests","Student Support","General Enquiries","Previous Students"]
 
     return (
         <div className="w-full h-screen sm:w-64 bg-gradient-to-b from-cyan-500 to-purple-400 text-white flex flex-col rounded">
