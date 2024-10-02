@@ -44,11 +44,7 @@ app.use(
 
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI,{ 
-  useNewUrlParser: true, 
-  useUnifiedTopology: true,
-  poolSize: 10,  // Limits the number of concurrent connections in the pool
-})
+mongoose.connect(process.env.MONGO_URI)
 .then(() => {
   console.log('MongoDB connected successfully hehe');
 })
@@ -67,18 +63,6 @@ app.use("/api/admin",adminRouter);
 
 app.get('/protectedRoute', verifyToken, (req, res) => {
   res.json({ message: 'This is a protected route', user: req.user });
-});
-
-process.on('SIGINT', async () => {
-  await mongoose.connection.close();
-  console.log("MongoDB connection closed due to app termination");
-  process.exit(0);
-});
-
-process.on('SIGTERM', async () => {
-  await mongoose.connection.close();
-  console.log("MongoDB connection closed due to app shutdown");
-  process.exit(0);
 });
 
 
