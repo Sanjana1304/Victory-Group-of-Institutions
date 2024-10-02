@@ -22,6 +22,9 @@ const courseSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    courseEnrollDate:{
+        type: String,
+    },
     courseDuration:{
         type: String,
         required: true,
@@ -37,6 +40,9 @@ const courseSchema = new mongoose.Schema({
         type: String,
     },
     courseFeedback:{
+        type: String,
+    },
+    certificateUrl:{
         type: String,
     },
 })

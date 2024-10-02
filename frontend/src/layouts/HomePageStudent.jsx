@@ -122,15 +122,15 @@ const HomePageStudent = () => {
           </div>
         </div>
 
-        <div className='w-[100%] sm:w-[70%] border p-4 rounded-lg'>
-          <h1 className='font-semibold text-xl'>Courses Enrolled</h1>
+        <div className='w-[100%] sm:w-[70%]  p-2 rounded-lg'>
+          <h1 className='font-semibold text-2xl'>Courses Enrolled</h1>
           {
             userdata?.courses?.length>0
             ?
             <div className='mt-4'>
               {
                 userdata.courses.map((course,index) => {
-                  return <CourseBox key={index} coursename={course.courseName} imgg="/images/comp2.avif" desc={course.courseDescription} coursePrice={course.coursePrice} courseRegDate={course.courseRegDate} courseDuration={course.courseDuration} courseInstructor={course.courseInstructor} status={course.courseStatus} courseId= {course._id} courseFeedback = {course.courseFeedback} hasPaid={course.hasPaid} />
+                  return <CourseBox key={index} coursename={course.courseName} imgg="/images/comp2.avif" desc={course.courseDescription} coursePrice={course.coursePrice} courseRegDate={course.courseRegDate}  courseEnrollDate={course.courseEnrollDate} courseDuration={course.courseDuration} courseInstructor={course.courseInstructor} status={course.courseStatus} courseId= {course._id} courseFeedback = {course.courseFeedback} hasPaid={course.hasPaid} />
                 })
               }
             </div>

@@ -4,6 +4,11 @@ import { enrollCourse } from '../../api-client';
 const EnrollForm = ({coursename,desc,fees}) => {
     const [selectedType,setSelectedType] = useState(null); //for course duration
     const [selectedLoc,setSelectedLoc] = useState(null); //for course location
+    const [selectedDate,setSelectedDate] = useState(''); //for course start date
+
+    const handleDateChange = (e) =>{
+        setSelectedDate(e.target.value);
+    }
 
     const handleRadioChange = (e) =>{
         setSelectedType(e.target.value);
@@ -28,7 +33,7 @@ const EnrollForm = ({coursename,desc,fees}) => {
         else if (selectedType === '6 Months') {  
             course_fee = fees[2];
         }
-        const res = await enrollCourse(coursename,desc,course_fee,selectedType,selectedLoc);
+        const res = await enrollCourse(coursename,desc,course_fee,selectedType,selectedLoc,selectedDate);
         if (res === 'success') {
             alert('Enrolled successfully');
         } else {
@@ -56,6 +61,15 @@ const EnrollForm = ({coursename,desc,fees}) => {
                     </div>
                     
                 </ul>
+            </div>
+            <div className='flex p-3 '>
+                <div className='flex flex-col justify-center'>When do you want to start your course? </div>
+                <input
+                    type="date"
+                    value={selectedDate}
+                    onChange={handleDateChange}
+                    className="ml-5 border border-gray-300 p-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue focus:border-blue"
+                />
             </div>
             <div className='p-3'>
                 <h1>Select your course duration</h1>
