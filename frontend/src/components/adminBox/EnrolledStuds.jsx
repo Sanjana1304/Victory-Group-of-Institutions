@@ -40,7 +40,7 @@ const EnrolledStuds = ({inProgressStudents}) => {
 
   const confirmFinish = async() => {
     try {
-      // Call the markPaid API
+      // Call the markCompleted API
       await markCompleted(feeMarkStudMail, feeMarkCourseId);
       alert('Course finished successfully');
       setFeeMarkCourseId('');

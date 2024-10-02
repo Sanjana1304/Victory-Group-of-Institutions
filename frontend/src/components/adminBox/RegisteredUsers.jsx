@@ -1,6 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Modal from '../../layouts/Modal';
+import EnrollForma from './EnrollForma';
 
 const RegisteredUsers = ({studentsWithNoCourses}) => {
+
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+
+  const closeEnroll = () => {
+    setIsEnrollOpen(false);
+  }
+
+  const [enrolledUserId, setEnrolledUserId] = useState('');
+
+  const handleAdminEnroll = (studId) => {
+    setEnrolledUserId(studId);
+    setIsEnrollOpen(true);
+  }
+
   return (
     <div className=" max-h-screen overflow-y-scroll">
       <table className="text-sm min-w-full bg-white border border-gray-200">
@@ -21,12 +37,23 @@ const RegisteredUsers = ({studentsWithNoCourses}) => {
               <td className="p-4 border-b">{student.email}</td>
               <td className="p-4 border-b">{student.phone}</td>
               <td className="p-4 border-b">No</td>
-              <td className="p-4 border-b py-6 text-sm text-center"><button className='p-1 px-2 bg-red rounded text-white'>Remove</button><button className='ml-1 p-1 px-3 bg-blue rounded text-white'>Enroll</button></td>
+              <td className="p-4 border-b py-6 text-sm text-center">
+                <button className='p-1 px-2 bg-red rounded text-white'>Remove</button>
+                <button onClick={()=>handleAdminEnroll(student._id)} className='ml-1 p-1 px-3 bg-blue rounded text-white'>Enroll</button>
+              </td>
             
             </tr>
           ))}
         </tbody>
       </table>
+
+      {
+        isEnrollOpen && (
+          <Modal onClose={closeEnroll}>
+            <EnrollForma studentId={enrolledUserId} />
+          </Modal>
+        )
+    }
     </div>
   )
 }

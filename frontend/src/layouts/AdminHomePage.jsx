@@ -92,6 +92,7 @@ const AdminHomePage = () => {
       const inProgress = processStudentsByCourseStatus(res, "In Progress");
       const completed = processStudentsByCourseStatus(res, "Completed");
       const noCourses = getStudentsWithNoCourses(res);
+      //console.log("no",noCourses);
 
       // Set the state with the processed data
       setInProgressStudents(inProgress);
