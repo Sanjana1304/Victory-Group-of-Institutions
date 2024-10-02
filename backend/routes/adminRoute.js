@@ -43,4 +43,17 @@ adminRouter.get('/getAllEnquiries',verifyToken,async(req,res)=>{
     }
 })
 
+//fee payment status change
+adminRouter.put('/markPaid',verifyToken,async(req,res)=>{
+    try {
+        const user = await userSchemaModel.findOne({email:req.body.email});
+        const course = user.courses.id(req.body.courseId);
+        course.hasPaid = true;
+        await user.save();
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+})
+
 module.exports = adminRouter;

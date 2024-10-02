@@ -34,6 +34,7 @@ const AdminHomePage = () => {
               email: student.email,
               phone: student.phone,
               course: {
+                courseId: course._id,
                 courseName: course.courseName,
                 courseStatus: course.courseStatus,
                 courseDuration: course.courseDuration,
