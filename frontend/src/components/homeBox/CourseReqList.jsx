@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { fetchUserData, getCourseReqByMail } from '../../api-client';
 import { useQuery } from 'react-query';
+import Modal from '../../layouts/Modal';
+import EnrollForm from './EnrollForm';
 
 const CourseReqList = () => {
     const { data: userdata } = useQuery('fetchUserData', fetchUserData);
@@ -26,6 +28,21 @@ const CourseReqList = () => {
 
     }, [userdata?.email]); // Only depend on userdata.email
 
+    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+    const [coursefee, setCourseFee] = useState(0);
+
+  const handleEnroll = (fees) => {
+    setCourseFee(fees);
+    console.log("fee",fees);
+    setIsEnrollOpen(true);
+    
+  }
+
+  const closeEnroll = () => {
+    setIsEnrollOpen(false);
+  }
+
+
     return (
         <div>
             {loading ? (
@@ -41,8 +58,19 @@ const CourseReqList = () => {
                                 <p>Course Description: {courseReq.courseDescription}</p>
                                 <p className='text-red font-semibold'>Status: {courseReq.requestStatus}</p>
                                 {
-                                    courseReq.requestStatus === 'Approved' && (
-                                        <button className='bg-blue p-1 mt-3 text-sm px-4 text-white'>Enroll</button>
+                                    courseReq.requestStatus === 'Accepted' && (
+                                        <button 
+                                        onClick={()=>handleEnroll(courseReq.feeProposed)}
+                                        className='bg-blue p-1 mt-3 text-sm px-4 text-white'>Enroll</button>
+                                    )
+                                }
+                                {
+                                    isEnrollOpen && (
+                                    <Modal onClose={closeEnroll}>
+                                        <div className='w-[900px]'>
+                                            <EnrollForm coursename={courseReq.courseTitle} desc={courseReq.courseDescription} fees={coursefee} />
+                                        </div>
+                                    </Modal>
                                     )
                                 }
                             </div>

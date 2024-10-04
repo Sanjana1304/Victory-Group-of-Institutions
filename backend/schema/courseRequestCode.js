@@ -28,6 +28,10 @@ const courseRequestSchema = new mongoose.Schema({
         type: String,
         default: "pending",
     },
+    feeProposed:{
+        type: [Number],
+        default: [0,0,0],
+    },
 })
 
 const courseRequestModel = mongoose.model('course_requests',courseRequestSchema);
