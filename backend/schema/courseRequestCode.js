@@ -32,6 +32,10 @@ const courseRequestSchema = new mongoose.Schema({
         type: [Number],
         default: [0,0,0],
     },
+    rejectReason:{
+        type: String,
+        default: "",
+    },
 })
 
 const courseRequestModel = mongoose.model('course_requests',courseRequestSchema);

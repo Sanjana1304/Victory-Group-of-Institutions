@@ -246,9 +246,23 @@ export const getCourseReqByMail = async (mail) => {
 }
 
 //accept course request and modify fee details
-export const acceptCourseReq = async (email,shortTermFee,mediumTermFee,longTermFee) => {
+export const acceptCourseReq = async (id,shortTermFee,mediumTermFee,longTermFee) => {
   try {
-    const res = await api.put('/api/admin/acceptRequest', { email,fees: [shortTermFee,mediumTermFee,longTermFee] },{
+    const res = await api.put('/api/admin/acceptRequest', { id,fees: [shortTermFee,mediumTermFee,longTermFee] },{
+        headers:{
+            'Content-Type':'application/json',
+        },
+        withCredentials: true,
+    });
+    return "success";
+  } catch (error) {
+    return error.message;
+  }
+}
+
+export const rejectCourseReq = async (id,rejectReason) => {
+  try {
+    const res = await api.put('/api/admin/rejectRequest', { id,rejectReason },{
         headers:{
             'Content-Type':'application/json',
         },

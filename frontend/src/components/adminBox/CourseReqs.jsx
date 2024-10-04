@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { getAllCourseRequests } from '../../api-client';
+import { getAllCourseRequests, rejectCourseReq } from '../../api-client';
 import { acceptCourseReq } from '../../api-client';
 
 const CourseReqs = () => {
 
-  const [requests, setRequests] = useState([]);
+  //const [requests, setRequests] = useState([]);
   const [openRequests, setOpenRequests] = useState([]);
   const [closedRequests, setClosedRequests] = useState([]);
 
-  const [approvedRequests, setApprovedRequests] = useState({});
+  const [approvedRequests, setApprovedRequests] = useState({}); // To keep track of request for which approve button was clicked
+  const [rejectedRequests, setRejectedRequests] = useState({}); // To keep track of request for which reject button was clicked
+
 
   useEffect(() => {
     // Fetch course requests from the database
@@ -16,7 +18,7 @@ const CourseReqs = () => {
       try {
         const response = await getAllCourseRequests();
         console.log('Course requests:', response);
-        setRequests(response);
+        //setRequests(response);
 
          // Split requests based on requestStatus
          const open = response.filter(req => req.requestStatus === 'pending');
@@ -38,17 +40,42 @@ const CourseReqs = () => {
     }));
   };
 
+  const handleReject = (index) => {
+    setRejectedRequests((prev) => ({
+      ...prev,
+      [index]: true, // Mark this particular request as rejected
+    }));
+  };
+
   const [shortTermFee, setShortTermFee] = useState('');
   const [mediumTermFee, setMediumTermFee] = useState('');
   const [longTermFee, setLongTermFee] = useState('');
 
-  const handleSubmit = async(e,email) => {
+  const [rejectReason, setRejectReason] = useState('');
+
+
+  const handleSubmit = async(e,id) => {
     e.preventDefault();
     try {
-      const res = await acceptCourseReq(email, shortTermFee, mediumTermFee, longTermFee);
+      const res = await acceptCourseReq(id, shortTermFee, mediumTermFee, longTermFee);
 
       if (res === 'success') {
         alert('Course request accepted successfully');
+        window.location.reload();
+        
+      }
+    } catch (error) {
+      alert('Server error:', error);
+    }
+  }
+
+  const handleRejectSubmit = async(e,id) => {
+    e.preventDefault();
+    try {
+      const res = await rejectCourseReq(id, rejectReason);
+
+      if (res === 'success') {
+        alert('Course request rejected successfully');
         window.location.reload();
         
       }
@@ -64,6 +91,7 @@ const CourseReqs = () => {
       
       {openRequests.map((request, index) => (
         <div key={index} className="bg-white shadow-md rounded-lg p-6">
+          {/* <p>{request._id}</p> */}
           <h3 className="text-lg font-bold mb-2">Name: {request.name}</h3>
           <p>Email: {request.email}</p>
           <p>Phone: {request.phone}</p>
@@ -79,13 +107,15 @@ const CourseReqs = () => {
             >
               Approve
             </button>
-            <button className="text-white px-4 py-2 rounded bg-red">
+            <button 
+              onClick={() => handleReject(index)}
+            className="text-white px-4 py-2 rounded bg-red">
               Reject
             </button>
           </div>
           {
             approvedRequests[index] && 
-            <form onSubmit={(e)=>handleSubmit(e,request.email)} className="max-w-md mx-auto p-4">
+            <form onSubmit={(e)=>handleSubmit(e,request._id)} className="max-w-md mx-auto p-4">
             <div className="mb-4">
               <label className="block text-gray-700 font-bold mb-2" htmlFor="shortTermFee">
                 Short-term Fee (45 days):
@@ -138,6 +168,16 @@ const CourseReqs = () => {
               Submit
             </button>
           </form>
+          }
+          {
+            rejectedRequests[index] && 
+            <form onSubmit={(e)=>handleRejectSubmit(e,request._id)}>
+              <input
+                type="text" 
+                onChange={(e) => setRejectReason(e.target.value)}
+                placeholder="Reason for rejection" className="border w-full p-2 my-2" />
+              <button className="bg-red text-white p-2 rounded">Submit</button>
+            </form>
           }
         </div>
       ))}
