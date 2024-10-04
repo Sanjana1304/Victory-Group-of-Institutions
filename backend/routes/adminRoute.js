@@ -87,4 +87,17 @@ adminRouter.post('/enrollStud',verifyToken,async(req,res)=>{
     }   
 })
 
+//modify requestStatus to Accepted and modify fee array of course_request collection which has a default value of [0,0,0] for a particular document based on email
+adminRouter.put('/acceptRequest',verifyToken,async(req,res)=>{
+    try {
+        const request = await courseRequestModel.findOne({email:req.body.email});
+        request.requestStatus = 'Accepted';
+        request.feeProposed = req.body.fees;
+        await request.save();
+        res.status(200).json(request);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+})
+
 module.exports = adminRouter;
