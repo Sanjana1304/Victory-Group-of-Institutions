@@ -66,6 +66,7 @@ export const craftCourse = async (name,email,phone,courseTitle, courseCategory, 
         },
         withCredentials: true,
     });
+
     return "success";
   } catch (error) {
     return error.message;

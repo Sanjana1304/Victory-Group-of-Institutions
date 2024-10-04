@@ -4,6 +4,7 @@ import { markCompleted, markPaid } from '../../api-client';
 
 const EnrolledStuds = ({inProgressStudents}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen1, setIsModalOpen1] = useState(false);
 
   const [feeMarkStudMail, setFeeMarkStudMail] = useState('');
   const [feeMarkCourseId, setFeeMarkCourseId] = useState('');
@@ -12,7 +13,7 @@ const EnrolledStuds = ({inProgressStudents}) => {
     console.log(email,courseId);
     setFeeMarkStudMail(email);
     setFeeMarkCourseId(courseId);
-    setIsModalOpen(true);
+    setIsModalOpen1(true);
   }
 
   const confirmPayment = async() => {
@@ -28,7 +29,7 @@ const EnrolledStuds = ({inProgressStudents}) => {
       alert('Error marking payment:', error);
       
     }
-    setIsModalOpen(false);
+    setIsModalOpen1(false);
     
   }
 
@@ -51,7 +52,6 @@ const EnrolledStuds = ({inProgressStudents}) => {
     }
     setIsModalOpen(false);
     //console.log('Course finished');
-
   }
 
   
@@ -84,7 +84,10 @@ const EnrolledStuds = ({inProgressStudents}) => {
             <td className="p-4 border-b">{student.course.coursePrice}</td>
             <td className="p-4 border-b">{student.course.hasPaid?<span className=' font-semibold'>Paid</span>:<span className='text-red font-semibold'>Pending<button className='mt-1 text-white bg-blue text-[8px] px-1' onClick={()=>handleMarkPaid(student.email,student.course.courseId)}>Mark Paid</button></span>}</td>
             <td className="p-4 border-b">{student.course.courseType}</td>
-            <td className="p-4 border-b">{student.phone} <a href={`mailto:${student.email}`} className='text-blue'>{student.email}</a></td>
+            <td className="p-4 border-b flex flex-col">
+              <a href={`https://wa.me/${student.phone}`} target='_blank' className='text-blue'>{student.phone}</a>
+              <a href={`mailto:${student.email}`} target='_blank' className='text-blue'>{student.email}</a>
+            </td>
             <td className="p-4 border-b py-6"><button onClick={()=>handleCourseFinish(student.email,student.course.courseId)} className='mt-1 p-1 px-3 bg-blue text-[10px] rounded text-white'>Finish</button></td>
             
           </tr>
@@ -93,8 +96,8 @@ const EnrolledStuds = ({inProgressStudents}) => {
     </table>
 
     <ModalConfirm
-      isOpen={isModalOpen}
-      onClose={() => setIsModalOpen(false)}
+      isOpen={isModalOpen1}
+      onClose={() => setIsModalOpen1(false)}
       onConfirm={() => confirmPayment()}
       message="Are you sure you want to mark this student as paid?"
     />
