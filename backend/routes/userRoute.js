@@ -205,6 +205,20 @@ userRouter.post('/support',verifyToken,async(req,res)=>{
 })
 
 
+//to retrieve course requests from db based on user mail
+userRouter.get('/getCourseReqByMail/:mail',verifyToken,async(req,res)=>{
+    try {
+        const mail = req.params.mail;
+        const record = await courseRequestModel.find({email:mail});
+        if (!record) {
+            return res.status(200).json([]);
+        }
+        res.status(200).json(record);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}   )
+
 
 
 // userRouter.put('/editMe',verifyToken,async(req,res)=>{

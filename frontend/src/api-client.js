@@ -228,3 +228,18 @@ export const markCompleted = async (email,courseId) => {
     return error.message;
   }
 }
+
+//course request retrieve using mail
+export const getCourseReqByMail = async (mail) => {
+  try {
+    const res = await api.get(`/api/users/getCourseReqByMail/${mail}`,{
+        headers:{
+            'Content-Type':'application/json',
+        },
+        withCredentials: true,
+    });
+    return res.data;
+  } catch (error) {
+    return error.message;
+  }
+}

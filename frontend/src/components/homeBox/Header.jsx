@@ -3,6 +3,8 @@ import DataContext from '../../context/DataContext';
 import { useNavigate } from 'react-router-dom';
 import Modal from '../../layouts/Modal';
 import SupportForm from './SupportForm';
+import { IoMdNotifications } from "react-icons/io";
+import { IoIosHelpCircle } from "react-icons/io";
 
 const Header = () => {
     const {handleSignOut} = useContext(DataContext);
@@ -24,6 +26,10 @@ const Header = () => {
     const closeAuth = () => {
       setIsAuthOpen(false);
     };
+
+    const handleOpenNotifications = () => {
+      navig('/home/notifications');
+    }
 
   return (
     <header className="py-4 sm:py-6">
@@ -86,7 +92,7 @@ const Header = () => {
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex md:items-center space-x-10 lg:ml-20 lg:space-x-12">
+            <nav className="hidden md:flex md:items-center space-x-8 lg:ml-15 lg:space-x-10">
               <button 
                 className="text-base font-normal text-gray-600 transition hover:text-black"
                 onClick={showAllCourses}
@@ -99,19 +105,16 @@ const Header = () => {
               <button className="text-base font-normal text-gray-600 transition hover:text-black">
                 College Admission Guidance
               </button>
-            </nav>
+              
+              <button 
+                onClick={handleOpenNotifications}
+                className="text-base font-normal text-gray-600 transition hover:text-black">
+                <IoMdNotifications className='text-2xl' />
+              </button>
 
-            {/* CTA Button */}
-
-            <div className="relative hidden md:inline-flex">
-              <div className="absolute transition-all duration-200 rounded-full -inset-px bg-gradient-to-r from-cyan-500 to-purple-500"></div>
-              <a
-                className="relative inline-flex items-center justify-center px-6 py-2 text-base font-normal text-white bg-blue border border-transparent rounded-full"
-                role="button"
-                onClick={openSupportModal}
-              >
-                Help
-              </a>
+              <button onClick={openSupportModal} className="text-base font-normal text-gray-600 transition hover:text-black">
+                <IoIosHelpCircle className='text-2xl mr-2' />
+              </button>
 
               {
                 isAuthOpen && (
@@ -120,12 +123,14 @@ const Header = () => {
                   </Modal>
                 )
               }
-            </div>
+            </nav>
+
+            {/* CTA Button */}
 
             <div className="relative hidden md:inline-flex">
               <div className="absolute transition-all duration-200 rounded-full -inset-px bg-gradient-to-r from-cyan-500 to-purple-500"></div>
               <a
-                className="relative inline-flex items-center justify-center px-6 py-2 text-base font-normal text-white bg-red border border-transparent rounded-full"
+                className="relative text-center inline-flex items-center justify-center px-6 py-2 text-base font-normal text-white bg-red border border-transparent rounded-full"
                 role="button"
                 onClick={handleSignOut}
               >

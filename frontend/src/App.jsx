@@ -6,6 +6,7 @@ import PrivateRoute from "./context/PrivateRoute";
 import HomePageStudent from "./layouts/HomePageStudent";
 import AdminHomePage from "./layouts/AdminHomePage";
 import AllCourses from './components/homeBox/AllCourses';
+import Notifications from './components/homeBox/Notifications';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/home" element={<PrivateRoute/>} >
           <Route path="" element={<HomePageStudent/>} />
           <Route path='/home/allcourses' element={<AllCourses/>} />
+          <Route path='/home/notifications' element={<Notifications/>} />
         </Route>
 
         <Route path="/admin" element={<PrivateRoute/>} >
