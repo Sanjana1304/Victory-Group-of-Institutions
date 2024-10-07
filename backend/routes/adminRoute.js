@@ -69,6 +69,25 @@ adminRouter.put('/markCompleted',verifyToken,async(req,res)=>{
     }
 })
 
+//remove a student from the database
+adminRouter.delete('/removeStudent/:id', verifyToken, async (req, res) => {
+    const id = req.params.id;
+    try {
+      const user = await userSchemaModel.findById(id);
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      await userSchemaModel.deleteOne({ _id: id });
+      res.status(200).json({ message: 'User removed successfully' });
+    } catch (error) {
+      console.error('Error removing user:', error);
+      res.status(500).json({ message: 'Server error' });
+    }
+  });
+  
+  
+
 //enroll a student with a course using student id and course details
 adminRouter.post('/enrollStud',verifyToken,async(req,res)=>{
     try {

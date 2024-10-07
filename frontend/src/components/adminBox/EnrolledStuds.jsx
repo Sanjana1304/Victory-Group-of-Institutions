@@ -10,7 +10,6 @@ const EnrolledStuds = ({inProgressStudents}) => {
   const [feeMarkCourseId, setFeeMarkCourseId] = useState('');
 
   const handleMarkPaid = (email,courseId) => {
-    console.log(email,courseId);
     setFeeMarkStudMail(email);
     setFeeMarkCourseId(courseId);
     setIsModalOpen1(true);
