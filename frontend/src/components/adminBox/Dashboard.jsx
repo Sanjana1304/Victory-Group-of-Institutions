@@ -19,7 +19,6 @@ const Dashboard = ({allStudentsCount,inProgressStudentsCount,completedStudentsCo
 
   //past 3 months
   const currentMonth = currentDate.getMonth();
-  const currentYear = currentDate.getFullYear();
   const currentMonthName = monthNames[currentMonth];
   const previousMonthIndex = (currentMonth - 1 + 12) % 12; // Ensure wrap around for January
   const previousMonthName = monthNames[previousMonthIndex];

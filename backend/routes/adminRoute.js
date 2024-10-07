@@ -158,4 +158,22 @@ adminRouter.put('/closeEnquiry/:id',verifyToken,async(req,res)=>{
     }
 })
 
+//total revenue calculation based on the fees paid by students
+adminRouter.get('/getTotalRevenue',verifyToken,async(req,res)=>{
+    try {
+        const users = await userSchemaModel.find();
+        let total = 0;
+        users.forEach(user => {
+            user.courses.forEach(course => {
+                if(course.hasPaid){
+                    total += course.coursePrice;
+                }
+            })
+        })
+        res.status(200).json({total});
+    } catch (error) {
+        res.status(500).send(error);
+    }
+})
+
 module.exports = adminRouter;
