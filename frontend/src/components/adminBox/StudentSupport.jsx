@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { getAllStudentSupport } from '../../api-client'
+import ModalConfirm from './ModalConfirm';
+import api from '../../api/axiosConfig';
 
 const StudentSupport = () => {
 
   const [studentSupport, setStudentSupport] = useState([]);
   const [pendingRequests, setPendingRequests] = useState([]);
   const [resolvedRequests, setResolvedRequests] = useState([]);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [ticketId, setticketId] = useState('');
 
   useEffect(() => {
     const fetchStudentSupport = async () => {
@@ -25,6 +30,27 @@ const StudentSupport = () => {
       setResolvedRequests(resolved);
     }
   }, [studentSupport]);
+
+  const handleCloseTicket = (id) => {
+    console.log('Close ticket', id);
+    setticketId(id);
+    setIsModalOpen(true);
+  }
+
+  const confirmCloseTicket = async() => {
+    try {
+      console.log('Inside Close ticket', ticketId);
+      const res = await api.put(`/api/admin/closeTicket/${ticketId}`);
+      alert(res.data.message);
+      
+    } catch (error) {
+      console.error('Error closing ticket:', error);
+      alert('Error closing ticket');
+      
+    }
+    setIsModalOpen(false);
+  }
+
 
 
   return (
@@ -49,7 +75,7 @@ const StudentSupport = () => {
                     <td className="p-4 border-b font-semibold">{student.name}</td>
                     <td className="p-4 border-b"> {student.email}</td>
                     <td className="p-4 border-b">{student.message}</td>
-                    <td className="p-4 border-b"><button className='p-1 px-2 bg-red text-[10px] rounded text-white'>Close Ticket</button></td>
+                    <td className="p-4 border-b"><button onClick={()=>handleCloseTicket(student._id)} className='p-1 px-2 bg-red text-[10px] rounded text-white'>Close Ticket</button></td>
                   </tr>
               ))}
             </tbody>
@@ -80,6 +106,14 @@ const StudentSupport = () => {
                 ))}
               </tbody>
           </table>
+
+          <ModalConfirm
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            onConfirm={()=>confirmCloseTicket()}
+            message='Close this ticket?'
+          />
+
         </div>
         <div>
         </div>

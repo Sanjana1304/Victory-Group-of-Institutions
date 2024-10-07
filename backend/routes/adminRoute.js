@@ -132,4 +132,30 @@ adminRouter.put('/rejectRequest',verifyToken,async(req,res)=>{
     }
 })
 
+//close ticket by changing status to resolved for a particular document based on id of the document in support collection
+adminRouter.put('/closeTicket/:id',verifyToken,async(req,res)=>{
+    const id = req.params.id;
+    try {
+        const ticket = await supportSchemaModal.findById(id);
+        ticket.status = 'resolved';
+        await ticket.save();
+        res.status(200).json({ message: 'Ticket closed successfully' });
+    } catch (error) {
+        res.status(500).send(error);
+    }
+})
+
+//close enquiry by changing status to resolved for a particular document based on id of the document in enquiries collection
+adminRouter.put('/closeEnquiry/:id',verifyToken,async(req,res)=>{
+    const id = req.params.id;
+    try {
+        const enquiry = await contactSchemaModel.findById(id);
+        enquiry.status = 'resolved';
+        await enquiry.save();
+        res.status(200).json({ message: 'Enquiry closed successfully' });
+    } catch (error) {
+        res.status(500).send(error);
+    }
+})
+
 module.exports = adminRouter;

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getAllEnquiries } from '../../api-client';
+import ModalConfirm from './ModalConfirm';
+import api from '../../api/axiosConfig';
 
 const GeneralEnquiries = () => {
 
@@ -7,13 +9,35 @@ const GeneralEnquiries = () => {
   const [closedEnquiry, setClosedEnquiry] = useState([]);
   const [openEnquiry, setOpenEnquiry] = useState([]);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [enquiryId, setenquiryId] = useState('');
+
+  const handleCloseEnquiry = (id) => {
+    console.log('Close enquiry', id);
+    setenquiryId(id);
+    setIsModalOpen(true);
+  }
+
+  const ConfirmCloseEnquiry = async() => {
+    try {
+      const res = await api.put(`/api/admin/closeEnquiry/${enquiryId}`);
+      alert(res.data.message);
+      
+    } catch (error) {
+      console.error('Error closing enquiry:', error);
+      alert('Error closing enquiry');
+      
+    }
+    setIsModalOpen(false);
+  }
+
   useEffect(() => {
     const fetchGenEnquiry = async () => {
       const res = await getAllEnquiries();
       setGenEnquiry(res);
     }
     fetchGenEnquiry();
-  })
+  },[genEnquiry,setGenEnquiry]);
 
   useEffect(() => {
     // Split the support requests into pending and resolved arrays
@@ -50,7 +74,7 @@ const GeneralEnquiries = () => {
                     <td className="p-4 border-b">{enquiry.phone}</td>
                     <td className="p-4 border-b">{enquiry.email}</td>
                     <td className="p-4 border-b">{enquiry.message}</td>
-                    <td className="p-4 border-b"><button className='p-1 px-2 bg-red text-[10px] rounded text-white'>Close Enquiry</button></td>
+                    <td className="p-4 border-b"><button onClick={()=>handleCloseEnquiry(enquiry._id)} className='p-1 px-2 bg-red text-[10px] rounded text-white'>Close Enquiry</button></td>
                   </tr>
               ))}
             </tbody>
@@ -80,8 +104,14 @@ const GeneralEnquiries = () => {
                 ))}
               </tbody>
           </table>
-        </div>
-        <div>
+          
+          <ModalConfirm
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            onConfirm={()=>ConfirmCloseEnquiry()}
+            message='Are you sure you want to close this enquiry?'
+          />
+
         </div>
       </div>
     </div>
