@@ -69,7 +69,7 @@ const EnrolledStuds = ({inProgressStudents}) => {
           <th className="px-4 py-3 border-b text-start">Mode</th>
           <th className="px-4 py-3 border-b text-start">Contact</th>
           <th className="px-4 py-3 border-b text-start">Action</th>
-          <th className="px-4 py-3 border-b text-start">Other</th>
+          {/* <th className="px-4 py-3 border-b text-start">Other</th> */}
         </tr>
       </thead>
       <tbody className='text-sm text-gray-700'>

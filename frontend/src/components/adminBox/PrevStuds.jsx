@@ -28,8 +28,8 @@ const PrevStuds = ({completedStudents}) => {
               <td className="p-4 border-b">{student.course.courseInstructor}</td>
               <td className="p-4 border-b">{student.course.coursePrice}</td>
               <td className="p-4 border-b">{student.course.courseType}</td>
-              <td className="p-4 border-b">{student.phone} <a href={`mailto:${student.email}`} className='text-blue'>{student.email}</a></td>
-              <td className="p-4 border-b py-6"><button className='p-1 px-2 bg-blue text-[10px] rounded text-white'>View Certificate</button></td>
+              <td className="p-4 border-b"><a href={`https://wa.me/${student.phone}`} target='_blank' className='text-blue'>{student.phone}</a> <a href={`mailto:${student.email}`} className='text-blue'>{student.email}</a></td>
+              <td className="p-4 border-b py-6"><button className='p-1 px-2 bg-blue text-[10px] rounded text-white'>Upload Certificate</button></td>
             </tr>
           ))}
         </tbody>
