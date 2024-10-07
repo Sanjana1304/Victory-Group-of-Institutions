@@ -3,12 +3,7 @@ import { getAllEnquiries } from '../../api-client';
 import ModalConfirm from './ModalConfirm';
 import api from '../../api/axiosConfig';
 
-const GeneralEnquiries = () => {
-
-  const [genEnquiry, setGenEnquiry] = useState([]);
-  const [closedEnquiry, setClosedEnquiry] = useState([]);
-  const [openEnquiry, setOpenEnquiry] = useState([]);
-
+const GeneralEnquiries = ({openEnquiry,closedEnquiry}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [enquiryId, setenquiryId] = useState('');
 
@@ -30,26 +25,6 @@ const GeneralEnquiries = () => {
     }
     setIsModalOpen(false);
   }
-
-  useEffect(() => {
-    const fetchGenEnquiry = async () => {
-      const res = await getAllEnquiries();
-      setGenEnquiry(res);
-    }
-    fetchGenEnquiry();
-  },[genEnquiry,setGenEnquiry]);
-
-  useEffect(() => {
-    // Split the support requests into pending and resolved arrays
-    if (genEnquiry.length) {
-      const open = genEnquiry.filter(request => request.status === 'pending');
-      const closed = genEnquiry.filter(request => request.status === 'resolved');
-      
-      setOpenEnquiry(open);
-      setClosedEnquiry(closed);
-    }
-  },[genEnquiry]);
-
   return (
     <div>
       <div className='bg-white p-3'>

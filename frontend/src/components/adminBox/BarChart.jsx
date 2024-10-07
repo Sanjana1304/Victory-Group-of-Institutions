@@ -4,13 +4,13 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Toolti
 // Register the components needed
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-const BarChart = () => {
+const BarChart = ({heading,xdata,ydata,legendVisibility,label}) => {
     const data = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+      labels: xdata,
       datasets: [
         {
-          label: 'Sales',
-          data: [30, 45, 28, 60, 70, 40],
+          label: label,
+          data: ydata,
           backgroundColor: 'rgba(75, 192, 192, 0.2)',
           borderColor: 'rgba(75, 192, 192, 1)',
           borderWidth: 1,
@@ -23,10 +23,11 @@ const BarChart = () => {
       plugins: {
         legend: {
           position: 'top',
+          display: legendVisibility,
         },
         title: {
           display: true,
-          text: 'Sales Over 6 Months',
+          text: heading,
         },
       },
     };

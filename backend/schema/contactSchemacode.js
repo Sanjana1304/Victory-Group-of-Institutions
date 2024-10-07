@@ -21,6 +21,10 @@ const contactSchema = new mongoose.Schema({
         type: String,
         default: "open",
     },
+    DateOfEnquiry:{
+        type: Date,
+        default: Date.now,
+    }
 })
 
 const contactSchemaModel = mongoose.model('enquiries',contactSchema);

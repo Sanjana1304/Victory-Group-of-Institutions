@@ -3,33 +3,34 @@ import { getAllStudentSupport } from '../../api-client'
 import ModalConfirm from './ModalConfirm';
 import api from '../../api/axiosConfig';
 
-const StudentSupport = () => {
+const StudentSupport = ({pendingRequests,resolvedRequests}) => {
 
-  const [studentSupport, setStudentSupport] = useState([]);
-  const [pendingRequests, setPendingRequests] = useState([]);
-  const [resolvedRequests, setResolvedRequests] = useState([]);
+  // const [studentSupport, setStudentSupport] = useState([]);
+  // const [pendingRequests, setPendingRequests] = useState([]);
+  // const [resolvedRequests, setResolvedRequests] = useState([]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [ticketId, setticketId] = useState('');
 
-  useEffect(() => {
-    const fetchStudentSupport = async () => {
-      const res = await getAllStudentSupport();
-      setStudentSupport(res);
-    }
-    fetchStudentSupport();
-  },[])
+  // useEffect(() => {
+  //   const fetchStudentSupport = async () => {
+  //     const res = await getAllStudentSupport();
+  //     setStudentSupport(res);
+  //   }
+  //   fetchStudentSupport();
+  // },[])
 
-  useEffect(() => {
-    // Split the support requests into pending and resolved arrays
-    if (studentSupport.length) {
-      const pending = studentSupport.filter(request => request.status === 'pending');
-      const resolved = studentSupport.filter(request => request.status === 'resolved');
+  // useEffect(() => {
+  //   // Split the support requests into pending and resolved arrays
+  //   if (studentSupport.length) {
+  //     const pending = studentSupport.filter(request => request.status === 'pending');
+  //     const resolved = studentSupport.filter(request => request.status === 'resolved');
       
-      setPendingRequests(pending);
-      setResolvedRequests(resolved);
-    }
-  }, [studentSupport]);
+  //     setPendingRequests(pending);
+  //     setResolvedRequests(resolved);
+  //   }
+  // }, [studentSupport]);
+
 
   const handleCloseTicket = (id) => {
     console.log('Close ticket', id);
