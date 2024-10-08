@@ -9,7 +9,7 @@ const PieChart = ({heading,xdata}) => {
     labels: xdata,
     datasets: [
       {
-        label: 'My First Dataset', // You can keep this label or remove it
+        label: 'No. of Students', // You can keep this label or remove it
         data: [12, 19, 3, 5, 2, 3], // Data for each segment
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',

@@ -39,7 +39,7 @@ const Dashboard = ({allStudentsCount,inProgressStudentsCount,completedStudentsCo
 
   return (
     <div className="p-2 bg-gray-100 min-h-screen">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto max-h-[750px] overflow-y-scroll">
         <h1 className="text-gray-600 text-2xl font-bold mb-2">Dashboard</h1>
         <div className=' bg-gradient-to-r from-purple-300 to-purple-500 p-3 font-semibold w-full mb-2 rounded-lg text-center flex justify-between'>
           <div>
@@ -86,7 +86,7 @@ const Dashboard = ({allStudentsCount,inProgressStudentsCount,completedStudentsCo
 
 
         <div className="flex gap-3 justify-around">
-          <div className="flex justify-center w-3/4 h-[490px] bg-white p-2 rounded-lg shadow-md">
+          <div className="flex justify-center w-3/4 h-[480px] bg-white p-2 rounded-lg shadow-md">
            <PieChart 
             className='w-full' 
             heading={'Distribution of Field in Enrollments'}

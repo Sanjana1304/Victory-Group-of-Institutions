@@ -57,7 +57,7 @@ const RegisteredUsers = ({studentsWithNoCourses}) => {
               <td className="p-4 border-b font-semibold">{student.name}</td>
               <td className="p-4 border-b">{student.email}</td>
               <td className="p-4 border-b">{student.phone}</td>
-              <td className="p-4 border-b">No</td>
+              <td className="p-4 border-b">Yes</td>
               <td className="p-4 border-b py-6 text-sm text-center">
                 <button onClick={()=>handleRemoveUser(student._id)} className='p-1 px-2 bg-red rounded text-white'>Remove</button>
                 <button onClick={()=>handleAdminEnroll(student._id)} className='ml-1 p-1 px-3 bg-blue rounded text-white'>Enroll</button>
