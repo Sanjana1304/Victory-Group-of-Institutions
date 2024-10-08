@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { getAllEnquiries } from '../../api-client';
+import React, { useState } from 'react'
 import ModalConfirm from './ModalConfirm';
 import api from '../../api/axiosConfig';
 
@@ -8,7 +7,6 @@ const GeneralEnquiries = ({openEnquiry,closedEnquiry}) => {
   const [enquiryId, setenquiryId] = useState('');
 
   const handleCloseEnquiry = (id) => {
-    console.log('Close enquiry', id);
     setenquiryId(id);
     setIsModalOpen(true);
   }

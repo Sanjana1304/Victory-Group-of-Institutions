@@ -15,6 +15,7 @@ const AdminHomePage = () => {
   const [activeItem, setActiveItem] = useState("Dashboard");
 
   //all types of students
+  const [allStudents, setAllStudents] = useState([]);
   const [allStudentsCount, setAllStudentsCount] = useState(0);
   const [inProgressStudents, setInProgressStudents] = useState([]);
   const [inProgressStudentsCount, setInProgressStudentsCount] = useState(0);
@@ -133,6 +134,7 @@ const AdminHomePage = () => {
                     closedEnquiryCount={closedEnquiryCount}
                     pendingRequestsCount={pendingRequestsCount}
                     resolvedRequestsCount={resolvedRequestsCount}
+                    inProgressStudents={inProgressStudents}
                   />;
         case "Enrolled Students":
             return <EnrolledStuds inProgressStudents={inProgressStudents} />
@@ -160,6 +162,7 @@ const AdminHomePage = () => {
   useEffect(() => {
     const fetchAllStudents = async () => {
       const res = await getAllStudents();
+      setAllStudents(res);
       setAllStudentsCount(res.length);
 
       // Process the data after fetching the students
