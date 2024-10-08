@@ -2,15 +2,26 @@ import api from './api/axiosConfig';
 
 export const register = async (email,name,usertype,phone, password) => {
   try {
+    
     const res = await api.post('/api/users/register', { email,name,usertype,phone, password },{
         headers:{
             'Content-Type':'application/json',
         },
         withCredentials: true,
     });
-    return "success";
-  } catch (error) {
-    return error.message;
+    if (res.status === 200) {
+      return "success";
+    }
+  } 
+  catch (error) {
+    if (error.response && error.response.status === 400) {
+      // Check if it's the specific "User already exists" error
+      return error.response.data.message;  // This will return "User already exists"
+    }
+    
+    // Catch-all for any other errors
+    return "Some error occurred";
+    
   }
 }
 
@@ -115,12 +126,13 @@ export const getTestimonials = async () => {
   }
 }
 
-export const enrollCourse = async (courseName, courseDescription, coursePrice, courseDuration,selectedLoc,selectedDate) => {
+export const enrollCourse = async (courseName,courseCat, courseDescription, coursePrice, courseDuration,selectedLoc,selectedDate) => {
   const currentDate = new Date();
   const formattedDate = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}-${currentDate.getDate().toString().padStart(2, '0')}`;
   
   const courseBody = {
     courseName: courseName,
+    courseCategory: courseCat,
     courseDescription: courseDescription,
     coursePrice: coursePrice,
     courseRegDate: formattedDate,

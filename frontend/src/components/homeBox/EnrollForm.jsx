@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { enrollCourse } from '../../api-client';
 
-const EnrollForm = ({coursename,desc,fees}) => {
+const EnrollForm = ({coursename,courseCat,desc,fees}) => {
     const [selectedType,setSelectedType] = useState(null); //for course duration
     const [selectedLoc,setSelectedLoc] = useState(null); //for course location
     const [selectedDate,setSelectedDate] = useState(''); //for course start date
@@ -33,7 +33,7 @@ const EnrollForm = ({coursename,desc,fees}) => {
         else if (selectedType === '6 Months') {  
             course_fee = fees[2];
         }
-        const res = await enrollCourse(coursename,desc,course_fee,selectedType,selectedLoc,selectedDate);
+        const res = await enrollCourse(coursename,courseCat,desc,course_fee,selectedType,selectedLoc,selectedDate);
         if (res === 'success') {
             alert('Enrolled successfully');
         } else {

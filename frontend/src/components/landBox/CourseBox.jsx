@@ -3,7 +3,7 @@ import Modal from '../../layouts/Modal';
 import FeedbackForm from '../homeBox/FeedbackForm';
 import EnrollForm from '../homeBox/EnrollForm';
 
-const CourseBox = ({coursename,imgg,desc,coursePrice,courseRegDate,courseEnrollDate,courseDuration,courseInstructor,status,enroll,courseId,courseFeedback,hasPaid,fees}) => {
+const CourseBox = ({coursename,courseCat,imgg,desc,coursePrice,courseRegDate,courseEnrollDate,courseDuration,courseInstructor,status,enroll,courseId,courseFeedback,hasPaid,fees}) => {
 
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   
@@ -91,7 +91,7 @@ const CourseBox = ({coursename,imgg,desc,coursePrice,courseRegDate,courseEnrollD
               {
                 isEnrollOpen && (
                   <Modal onClose={closeEnroll}>
-                   <EnrollForm coursename={coursename} desc={desc} fees={fees} />
+                   <EnrollForm coursename={coursename} courseCat={courseCat} desc={desc} fees={fees} />
                   </Modal>
                 )
               }

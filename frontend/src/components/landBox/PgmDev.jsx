@@ -42,7 +42,7 @@ const PgmDev = ({enroll}) => {
   return (
     <div className='max-h-[500px] overflow-y-scroll'>
       {courses.map((course,index) => {
-        return <CourseBox key={index} coursename={course} imgg="/images/comp2.avif" desc={descriptions[index]} enroll={enroll} fees={fees[index]}/>
+        return <CourseBox key={index} coursename={course} courseCat={'Programming & Development'} imgg="/images/comp2.avif" desc={descriptions[index]} enroll={enroll} fees={fees[index]}/>
       })}
     </div>
   )

@@ -7,6 +7,9 @@ const courseSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    courseCategory:{
+        type: String,
+    },
     courseDescription:{
         type: String,
         required: true,

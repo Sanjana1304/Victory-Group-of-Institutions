@@ -104,14 +104,14 @@ adminRouter.delete('/removeStudent/:id', verifyToken, async (req, res) => {
 //enroll a student with a course using student id and course details
 adminRouter.post('/enrollStud',verifyToken,async(req,res)=>{
     try {
-        const {studId,courseName,courseDescription,coursePrice,courseRegDate,courseEnrollDate,courseDuration,courseInstructor,courseStatus,courseType} = req.body;
+        const {studId,courseName,courseCategory,courseDescription,coursePrice,courseRegDate,courseEnrollDate,courseDuration,courseInstructor,courseStatus,courseType} = req.body;
         const user = await userSchemaModel.findById(studId);
 
         if (!user) {
             return res.status(404).send({ message: 'User not found' });
         }
 
-        user.courses.push({courseName,courseDescription,coursePrice,courseRegDate,courseEnrollDate,courseDuration,courseInstructor,courseStatus,courseType});
+        user.courses.push({courseName,courseCategory,courseDescription,coursePrice,courseRegDate,courseEnrollDate,courseDuration,courseInstructor,courseStatus,courseType});
         await user.save();
         res.status(200).send("success");
     } catch (error) {

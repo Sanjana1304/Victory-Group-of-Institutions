@@ -32,7 +32,7 @@ const SummerCamp = ({enroll}) => {
   return (
     <div className='max-h-[500px] overflow-y-scroll'>
       {courses.map((course,index) => {
-        return <CourseBox key={index} coursename={course} imgg="/images/summercamp.webp" desc={descriptions[index]} enroll={enroll} fees={fees[index]}/>
+        return <CourseBox key={index} coursename={course} courseCat={'Summer Camp'} imgg="/images/summercamp.webp" desc={descriptions[index]} enroll={enroll} fees={fees[index]}/>
       })}
     </div>
   )

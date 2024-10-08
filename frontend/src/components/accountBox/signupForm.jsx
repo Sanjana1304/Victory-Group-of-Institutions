@@ -49,13 +49,16 @@ export function SignupForm() {
           setSignUpConfirmPassword("");
         }
         else{
-          alert("Error creating account");
+          alert(`Error creating account ${res}`);
         }
       } catch (error) {
         console.log(error);
+        alert("An unexpected error occurred while creating the account.");
       }
     }
   }
+
+
   return (
     <BoxContainer>
       <FormContainer onSubmit={signUpMyAccount} >

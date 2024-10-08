@@ -25,7 +25,7 @@ const SpokenLangs = ({enroll}) => {
   return (
     <div className='max-h-[500px] overflow-y-scroll'>
       {courses.map((course,index) => {
-        return <CourseBox key={index} coursename={course} imgg="/images/spokenlang.jpg" desc={descriptions[index]} enroll={enroll} fees={fees[index]}/>
+        return <CourseBox key={index} coursename={course} courseCat={'Spoken Languages'} imgg="/images/spokenlang.jpg" desc={descriptions[index]} enroll={enroll} fees={fees[index]}/>
       })}
     </div>
   )

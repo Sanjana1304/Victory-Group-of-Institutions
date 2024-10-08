@@ -6,10 +6,10 @@ const EnrollForma = ({studentId}) => {
     const currentDate = new Date();
     const formattedDate = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}-${currentDate.getDate().toString().padStart(2, '0')}`;
   
-
     const [formData, setFormData] = useState({
         studId: studentId,
         courseName: '',
+        courseCategory: '',
         courseDescription: '',
         coursePrice: '',
         courseRegDate: formattedDate,
@@ -67,6 +67,29 @@ const EnrollForma = ({studentId}) => {
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               required
             />
+          </div>
+
+          {/* Course Category */}
+          <div>
+            <label htmlFor="courseCategory" className="block text-sm font-medium text-gray-700">Course Category</label>
+            <select
+              name="courseCategory"
+              id="courseCategory"
+              value={formData.courseCategory}
+              onChange={handleChange}
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              required
+            >
+              <option value="">Select Category</option>
+              <option value="Programming & Development">Programming & Development</option>
+              <option value="Office Productivity Tools">Office Productivity Tools</option>
+              <option value="Business & Accounting Solutions">Business & Accounting Solutions</option>
+              <option value="Spoken Languages">Spoken Languages</option>
+              <option value="Creative Design & Multimedia">Creative Design & Multimedia</option>
+              <option value="Tuitions">Tuitions</option>
+              <option value="Summer Camp">Summer Camp</option>
+              
+            </select>
           </div>
   
           {/* Course Description */}
