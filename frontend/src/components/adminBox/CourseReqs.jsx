@@ -17,7 +17,6 @@ const CourseReqs = () => {
     const fetchRequests = async () => {
       try {
         const response = await getAllCourseRequests();
-        console.log('Course requests:', response);
         //setRequests(response);
 
          // Split requests based on requestStatus

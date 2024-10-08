@@ -215,6 +215,21 @@ export const markPaid = async (email,courseId) => {
   }
 }
 
+//assign instructor to a course using user mail and course id and instructor name
+export const assignInstructor = async (email,courseId,instructor) => {
+  try {
+    const res = await api.put('/api/admin/assignInstructor', { email, courseId, instructor },{
+        headers:{
+            'Content-Type':'application/json',
+        },
+        withCredentials: true,
+    });
+    return "success";
+  } catch (error) {
+    return error.message;
+  }
+}
+
 //course status change to completed
 export const markCompleted = async (email,courseId) => {
   try {

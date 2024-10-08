@@ -12,7 +12,6 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 
 const Dashboard = ({allStudentsCount,inProgressStudentsCount,completedStudentsCount,genEnquiryCount,openEnquiryCount,closedEnquiryCount,pendingRequestsCount,resolvedRequestsCount,inProgressStudents}) => {
-  console.log(inProgressStudents);
   const currentDate = new Date();
   const monthNames = [
     "January", "February", "March", "April", "May", "June",
