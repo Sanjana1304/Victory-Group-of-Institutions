@@ -4,13 +4,13 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 // Register the components needed
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const PieChart = ({heading,xdata}) => {
+const PieChart = ({heading,xdata,ydata}) => {
   const data = {
     labels: xdata,
     datasets: [
       {
         label: 'No. of Students', // You can keep this label or remove it
-        data: [12, 19, 3, 5, 2, 3], // Data for each segment
+        data: ydata, // Data for each segment
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',

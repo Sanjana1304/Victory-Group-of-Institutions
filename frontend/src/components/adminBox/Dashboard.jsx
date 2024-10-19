@@ -30,6 +30,7 @@ const Dashboard = ({allStudentsCount,inProgressStudentsCount,completedStudentsCo
   const [totalRevenue, setTotalRevenue] = useState(0);
 
   const [enrollmentData, setEnrollmentData] = useState([0, 0, 0]);
+  const [enrollmentDataOnCategory, setEnrollmentDataOnCategory] = useState([0, 0, 0, 0, 0, 0, 0]);
 
 
   useEffect(() => {
@@ -63,6 +64,36 @@ const Dashboard = ({allStudentsCount,inProgressStudentsCount,completedStudentsCo
 
     fetchEnrollmentData();
   }, [currentMonth, previousMonthIndex, monthBeforePreviousIndex]);
+
+  // Fetch enrollment data from the backend
+  useEffect(() => {
+    const fetchEnrollmentDataOnCat = async () => {
+      try {
+        const response = await api.get("api/admin/enrollments-per-category"); // Fetch from your backend API
+        const data = await response.data;
+        
+        // Create a count array that aligns with the categories you want to display
+        const categoryCounts = [
+          "Programming & Development",
+          "Office Productivity Tools",
+          "Business & Accounting Solutions",
+          "Spoken Languages",
+          "Creative Design & Multimedia",
+          "Tuitions",
+          "Summer Camp"
+        ].map(category => {
+          const found = data.find(item => item._id === category);
+          return found ? found.count : 0;
+        });
+
+        setEnrollmentDataOnCategory(categoryCounts);
+      } catch (error) {
+        console.error("Error fetching enrollment data:", error);
+      }
+    };
+
+    fetchEnrollmentDataOnCat();
+  }, []);
 
 
   return (
@@ -119,6 +150,7 @@ const Dashboard = ({allStudentsCount,inProgressStudentsCount,completedStudentsCo
             className='w-full' 
             heading={'Distribution of Field in Enrollments'}
             xdata={["Programming & Development","Office Productivity Tools","Business & Accounting Solutions","Spoken Languages","Creative Design & Multimedia", "Tuitions","Summer Camp"]}
+            ydata={enrollmentDataOnCategory}
             />
           </div>
 
