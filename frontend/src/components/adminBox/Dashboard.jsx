@@ -28,6 +28,10 @@ const Dashboard = ({allStudentsCount,inProgressStudentsCount,completedStudentsCo
   const monthBeforePreviousName = monthNames[monthBeforePreviousIndex];
 
   const [totalRevenue, setTotalRevenue] = useState(0);
+
+  const [enrollmentData, setEnrollmentData] = useState([0, 0, 0]);
+
+
   useEffect(() => {
     const fetchTotalRevenue = async () => {
       const res = await api.get('/api/admin/getTotalRevenue');
@@ -35,6 +39,30 @@ const Dashboard = ({allStudentsCount,inProgressStudentsCount,completedStudentsCo
     }
     fetchTotalRevenue();
   },[])
+
+  useEffect(() => {
+    const fetchEnrollmentData = async () => {
+      try {
+        const response = await api.get("/api/admin/enrollments/last-three-months");
+        const data = await response.data;
+        
+        // Initialize counts to 0 for each of the last 3 months
+        const enrollmentCounts = { [monthBeforePreviousIndex + 1]: 0, [previousMonthIndex + 1]: 0, [currentMonth + 1]: 0 };
+
+        // Fill the counts from the result
+        data.forEach(item => {
+          enrollmentCounts[item._id.month] = item.count;
+        });
+
+        // Set enrollment data in the order of the last 3 months
+        setEnrollmentData([enrollmentCounts[monthBeforePreviousIndex + 1], enrollmentCounts[previousMonthIndex + 1], enrollmentCounts[currentMonth + 1]]);
+      } catch (error) {
+        console.error("Error fetching enrollment data:", error);
+      }
+    };
+
+    fetchEnrollmentData();
+  }, [currentMonth, previousMonthIndex, monthBeforePreviousIndex]);
 
 
   return (
@@ -96,7 +124,7 @@ const Dashboard = ({allStudentsCount,inProgressStudentsCount,completedStudentsCo
 
           <div className='w-1/4 flex gap-2 flex-col justify-between'>
             <div className=" bg-white p-2 h-1/3 py-5 rounded-lg shadow-md">
-              <LineChart heading={'Enrollments over 3 months'} xdata= {[monthBeforePreviousName,previousMonthName,currentMonthName]} />
+              <LineChart heading={'Enrollments over 3 months'} xdata= {[monthBeforePreviousName,previousMonthName,currentMonthName]} ydata={enrollmentData} />
             </div>
 
             <div className='bg-white p-2 h-1/3 py-5 rounded-lg shadow-md'>

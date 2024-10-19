@@ -189,4 +189,48 @@ adminRouter.get('/getTotalRevenue',verifyToken,async(req,res)=>{
     }
 })
 
+adminRouter.get("/enrollments/last-three-months", async (req, res) => {
+    try {
+        // Get the current date and calculate the first day of each of the last 3 months
+        const currentDate = new Date();
+        const startOfTwoMonthsAgo = new Date(currentDate.getFullYear(), currentDate.getMonth() - 2, 1); // 2 months ago 1st
+
+        // Aggregate and count enrollments per month
+        const result = await userSchemaModel.aggregate([
+            { 
+                $unwind: "$courses" // Unwind the 'courses' array so each course becomes a separate document
+            },
+            {
+                $match: { 
+                    "courses.courseEnrollDate": {
+                        $gte: startOfTwoMonthsAgo, // Enrollments from 2 months ago to now
+                        $lt: new Date() // Until today
+                    }
+                } 
+            },
+            {
+                $addFields: {
+                    month: { $month: { $toDate: "$courses.courseEnrollDate" } },
+                    year: { $year: { $toDate: "$courses.courseEnrollDate" } }
+                }
+            },
+            {
+                $group: {
+                    _id: { month: "$month", year: "$year" }, // Group by month and year
+                    count: { $sum: 1 } // Count the number of enrollments
+                }
+            },
+            {
+                $sort: { "_id.year": 1, "_id.month": 1 } // Sort by year and month
+            }
+        ]);
+
+        // Return the enrollment counts for the past 3 months
+        res.status(200).json(result);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Server Error");
+    }
+});
+
 module.exports = adminRouter;

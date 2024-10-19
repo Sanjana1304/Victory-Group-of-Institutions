@@ -4,12 +4,12 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement
 // Register the components needed
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-const LineChart = ({heading,xdata}) => {
+const LineChart = ({heading,xdata,ydata}) => {
     const data = {
       labels: xdata,
       datasets: [
         {
-          data: [50, 60, 70, 180, 190, 210],
+          data: ydata,
           borderColor: 'rgba(75, 192, 192, 1)',
           backgroundColor: 'rgba(75, 192, 192, 0.2)',
           fill: true,  // To fill the area under the line
