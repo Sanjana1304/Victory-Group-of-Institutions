@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { support } from '../../api-client';
 import { useQuery } from 'react-query'
-import { craftCourse, fetchUserData } from '../../api-client';
+import { fetchUserData } from '../../api-client';
 
 const SupportForm = () => {
     const {data : userdata} = useQuery('fetchUserData',fetchUserData);

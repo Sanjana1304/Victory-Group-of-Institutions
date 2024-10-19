@@ -14,20 +14,19 @@ const FeedbackForm = ({courseId}) => {
         }
     }
   return (
-    <div>
-        <form className='mt-4 bg-blue p-4 text-white rounded-lg' onSubmit={addFeedbackfunc}>
-        <h2 className='text-lg mb-2'>Feedback Form</h2>
-            <div className='flex flex-col'>
+    <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+        <form className='space-y-4' onSubmit={addFeedbackfunc}>
+        <label className='block text-sm font-medium text-gray-700'>Feedback Form</label>
             <textarea id='feedback' 
                 value={feedback} 
                 onChange={(e)=>setFeedback(e.target.value) } 
-                className='border p-2 rounded-lg text-gray-500' 
+                className='mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' 
                 placeholder='Enter your feedback here'
                 rows='5'>
 
             </textarea>
-            </div>
-            <button type='submit' className='bg-white text-blue p-2 px-4 rounded-lg mt-4'>Submit</button>
+           
+            <button type='submit' className='w-full bg-blue text-white py-2 px-4 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>Submit</button>
         </form>
     </div>
   )
