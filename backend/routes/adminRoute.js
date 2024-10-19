@@ -233,4 +233,31 @@ adminRouter.get("/enrollments/last-three-months", async (req, res) => {
     }
 });
 
+adminRouter.get("/enrollments-per-category", async (req, res) => {
+    try {
+        // Aggregation to count enrollments per category
+        const result = await userSchemaModel.aggregate([
+            { 
+                $unwind: "$courses" // Unwind the 'courses' array so each course becomes a separate document
+            },
+            { 
+                $group: {
+                    _id: "$courses.courseCategory", // Group by course category
+                    count: { $sum: 1 } // Count the number of enrollments in each category
+                }
+            },
+            {
+                $sort: { count: -1 } // Sort by the count in descending order (optional)
+            }
+        ]);
+
+        console.log(result); // Debug to check the output
+        res.status(200).json(result); // Send the result as the response
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Server Error");
+    }
+});
+
+
 module.exports = adminRouter;
