@@ -22,7 +22,7 @@ const InstrForm = ({studentEmail,courseId}) => {
   return (
     <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
         <form onSubmit={handleCourseInstrAssign} className="space-y-4">
-            <label htmlFor="courseName" className="block text-sm font-medium text-gray-700">Course Name</label>
+            <label htmlFor="courseName" className="block text-sm font-medium text-gray-700">Intructor Name</label>
             <input
               type="text"
               name="courseName"
